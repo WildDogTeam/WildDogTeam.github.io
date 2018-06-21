@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>WDGVideoClientOptions | 开发文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="telephone=no,email=no" name="format-detection">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/video/iOS/api/WDGVideoClientOptions.html">
+  <!-- Alternative links -->
+  
+    
+  
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="/images/favicon.png" sizes="24x24">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="开发文档">
+  <!-- Open Graph -->
+  <meta name="description" content="初始化 WDGVideoClient 对象时使用的配置选项。 属性delegateQueue定义 @property (readwrite, strong, nonatomic) dispatch_queue_t _Nonnull delegateQueue; 说明 回调将在该队列中调用。默认为 main queue。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WDGVideoClientOptions">
+<meta property="og:url" content="http://yoursite.com/video/iOS/api/WDGVideoClientOptions.html">
+<meta property="og:site_name" content="开发文档">
+<meta property="og:description" content="初始化 WDGVideoClient 对象时使用的配置选项。 属性delegateQueue定义 @property (readwrite, strong, nonatomic) dispatch_queue_t _Nonnull delegateQueue; 说明 回调将在该队列中调用。默认为 main queue。">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-06-21T12:46:00.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WDGVideoClientOptions">
+<meta name="twitter:description" content="初始化 WDGVideoClient 对象时使用的配置选项。 属性delegateQueue定义 @property (readwrite, strong, nonatomic) dispatch_queue_t _Nonnull delegateQueue; 说明 回调将在该队列中调用。默认为 main queue。">
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="https://www.wilddog.com" id="logo"></a>
+    </h1>
+    <div class="menu-ctrl" style="display: none;">
+      <span class="menu-ctrl-line menu-ctrl-line-t"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-m"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-b"></span>
+    </div>
+    <nav id="main-nav">
+      <a href="/overview/index.html" class="main-nav-link">概览</a>
+      <a href="/sync/Web/index.html" class="main-nav-link">实时通信引擎</a>
+      <a href="/sms/index.html" class="main-nav-link">智能短信</a>
+      <a href="/auth/Web/index.html" class="main-nav-link">身份认证</a>
+      
+      
+      
+      
+    </nav>
+    <div class="searchbar">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+        <span class="serach-placeholder">搜索</span>
+      </div>
+    </div>
+    <div class="searchbar-inputting">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+      </div>
+      <form accept-charset="utf-8" action="/result/index.html">
+        <input type="search" class="search-input" placeholder="搜索" name="keyword">
+      </form>
+      <span class="close-search"><img src="/images/close.svg" alt=""></span>
+    </div>
+    <div class="header-info pull-right">
+        <span class="pull-left"><img src="" alt="" class="img-circle profile-avatar" width="24" height="24"></span>
+        <span class="user-email"></span>
+        <span class="arr-down icon-48"></span>
+        <ul class="drop-menu clearfix">
+            <li class="drop-menu-item header-item-profile col-sm-6 text-center">
+                <a href="https://www.wilddog.com/info/info" class="header-item-link">
+                    <span class="header-item-icon icon-profile">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m281 366c-2 0-4-1-6-2-2-2-2-5-2-7l15-75c0-2 1-3 2-4l129-129c19-19 52-19 71 0 10 9 15 22 15 36 0 13-5 26-15 35l-128 129c-2 1-3 2-4 2l-76 15c0 0-1 0-1 0z m22-79l-12 61 61-12 127-127c7-6 10-15 10-24 0-10-3-19-10-25-13-13-36-13-49 0z m7 73c-3 0-6-2-7-5-1-4-4-8-8-11-3-4-7-6-11-8-4-2-6-6-4-10 1-4 6-6 10-5 6 3 12 7 17 12 4 4 8 10 11 17 1 4-1 8-5 10-1 0-2 0-3 0z m47-9c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 10 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m126-126c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 9 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m-234-118l-109 0c-5 0-8-3-8-7 0-5 3-8 8-8l109 0c4 0 8 3 8 8 0 4-4 7-8 7z m-55 184c-58 0-106-46-106-103l0-85c0-57 48-103 106-103 59 0 107 46 107 103l0 85c0 57-48 103-107 103z m0-275c-50 0-91 39-91 87l0 85c0 48 41 88 91 88 50 0 91-40 91-88l0-85c0-48-41-87-91-87z m187 489l-373 0c-5 0-8-3-8-7l0-117c0-70 59-127 131-127 5 0 8 3 8 8 0 4-3 7-8 7-64 0-115 50-115 112l0 109 357 0 0-109c0-5 4-8 8-8 4 0 8 3 8 8l0 117c0 4-4 7-8 7z"></path></svg>
+                    </span>
+                    <span class="header-item-title">个人中心</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-confirm col-sm-6 text-center">
+                <a href="https://www.wilddog.com/pay/trade-entry" class="header-item-link">
+                    <span class="header-item-icon icon-confirm">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m15 188l-15 0 0-114c0-23 19-42 42-42l257 0c23 0 42 19 42 42l0 66-15 0 0-66c0-15-12-27-27-27l-257 0c-15 0-27 12-27 27z m455 286l-428 0c-23 0-42-19-42-43l0-257c0-23 19-42 42-42l428 0c23 0 42 19 42 42l0 257c0 24-19 43-42 43z m-428-327c-15 0-27 12-27 27l0 257c0 15 12 28 27 28l428 0c15 0 27-13 27-28l0-257c0-15-12-27-27-27l-428 0z m378 195c-22 0-39-18-39-39 0-22 17-39 39-39 21 0 39 17 39 39 0 21-18 39-39 39z m0-63c-14 0-24 11-24 24 0 13 10 24 24 24 13 0 24-11 24-24 0-13-11-24-24-24z"></path></svg>
+                    </span>
+                    <span class="header-item-title">财务</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-doc col-sm-6 text-center">
+                <a href="https://docs.wilddog.com/overview/index.html" class="header-item-link">
+                    <span class="header-item-icon icon-icon-v-05">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m100 232l305 0 0 17-305 0z m0 82l305 0 0 17-305 0z m0 83l305 0 0 17-305 0z m152-380c22 0 42 13 50 33 3 6 9 10 16 10l18 0 0 59-167 0 0-59 18 0c6 0 13-4 15-10 9-20 29-33 50-33m0-17c-29 0-54 18-65 43l-35 0 0 93 201 0 0-93-35 0c-11-25-36-43-66-43z m174 503l-348 0c-43 0-78-35-78-78l0-276c0-44 35-79 78-79l48 0 0 17-48 0c-34 0-61 28-61 62l0 276c0 34 27 61 61 61l348 0c34 0 62-27 62-61l0-276c0-34-28-62-62-62l-47 0 0-17 47 0c44 0 79 35 79 79l0 276c0 43-35 78-79 78z"></path></svg>
+                    </span>
+                    <span class="header-item-title">文档</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-service col-sm-6 text-center">
+                <a href="https://www.wilddog.com/wwwapi/account/kf5" class="header-item-link">
+                    <span class="header-item-icon icon-service">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m256 16c132 0 240 108 240 240 0 132-108 240-240 240-132 0-240-108-240-240 0-132 108-240 240-240m0-16c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m0 355c-4 0-8-4-8-8l0-24c0-35 10-54 44-78 24-15 36-35 36-59 0-36-32-64-72-64-40 0-72 29-72 64 0 5-3 8-8 8-4 0-8-3-8-8 0-44 39-80 88-80 49 0 88 35 88 80 0 30-14 54-43 72-29 22-37 35-37 65l0 24c0 4-4 8-8 8z m0 79c-4 0-8-3-8-8l0-37c0-4 4-8 8-8 4 0 8 4 8 8l0 37c0 5-4 8-8 8z"></path></svg>
+                    </span>
+                    <span class="header-item-title">客服工单</span>
+                </a>
+            </li>
+            <li class="drop-menu-item logout col-sm-12 text-center">
+                <a href="" class="header-item-link logout-btn">退出登录</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="header-user pull-right">
+        <li class="pull-left login-tab"><a href="" class="login">登录</a></li>
+        <li class="pull-right register-tab"><a href="" class="btn btn-org-empty register">免费注册</a></li>
+    </ul>
+  </div>
+</header>
+<div class="mask fadeHide"></div>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">
+                  WDGVideoClientOptions
+                  <span class="edit-doc-source">
+                    <a href="https://github.com/WildDogTeam/wilddog-doc2/blob/master/source/video/iOS/api/WDGVideoClientOptions.md" class="edit-doc-link" title="改进本文">
+                    <svg version="1.1" width="16px" height="16px" viewBox="200.38 -94.272 16 16">
+                      <path fill="#999999" class="github" d="M208.38-94.272c-4.42,0-8,3.671-8,8.202c0,3.63,2.29,6.695,5.47,7.782c0.4,0.072,0.55-0.174,0.55-0.39
+                      c0-0.195-0.01-0.841-0.01-1.528c-2.01,0.379-2.53-0.502-2.69-0.964c-0.09-0.236-0.48-0.964-0.82-1.159
+                      c-0.28-0.154-0.68-0.533-0.01-0.543c0.63-0.01,1.08,0.595,1.23,0.841c0.72,1.241,1.87,0.892,2.33,0.677
+                      c0.07-0.533,0.28-0.892,0.51-1.097c-1.78-0.205-3.64-0.913-3.64-4.05c0-0.892,0.31-1.63,0.82-2.204
+                      c-0.08-0.205-0.36-1.046,0.08-2.174c0,0,0.67-0.215,2.2,0.841c0.64-0.185,1.32-0.277,2-0.277s1.36,0.092,2,0.277
+                      c1.53-1.066,2.2-0.841,2.2-0.841c0.44,1.128,0.16,1.969,0.08,2.174c0.51,0.574,0.82,1.302,0.82,2.204c0,3.148-1.87,3.845-3.65,4.05
+                      c0.29,0.256,0.54,0.748,0.54,1.517c0,1.097-0.01,1.979-0.01,2.256c0,0.215,0.15,0.472,0.55,0.39c3.256-1.127,5.449-4.258,5.45-7.782
+                      C216.38-90.601,212.8-94.272,208.38-94.272z"/>
+                    </svg><span class="article-edit-link">编辑文档</span></a>
+                  </span>
+                </h1>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>初始化 <a href="/video/iOS/api/WDGVideoClient.html">WDGVideoClient</a> 对象时使用的配置选项。</p>
+<h2 id="属性" class="article-heading"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="delegateQueue" class="article-heading"><a href="#delegateQueue" class="headerlink" title="delegateQueue"></a>delegateQueue</h3><p><strong>定义</strong></p>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">readwrite</span>, <span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">dispatch_queue_t</span> _Nonnull delegateQueue;</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong></p>
+<p>回调将在该队列中调用。默认为 main queue。</p>
+
+                <time class="article-footer-updated" datetime="2018-06-21T12:46:00.180Z" itemprop="dateModified">上次更新：2018-06-21</time>
+              </div>
+              <div class="toc-content">
+                <aside id="article-toc" role="navigation">
+                  <div class="toc-scroll-content">
+                    <div class="toc-inner">
+                      <span class="slide-dot"></span>
+                      <div id="article-toc-inner">
+                        <strong class="sidebar-title">目录</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#delegateQueue"><span class="toc-text">delegateQueue</span></a></li></ol></li></ol>
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+                <div class="toc-link-title"></div>
+              </div>
+              <footer class="article-footer">
+                
+              </footer>
+              <div class="novice novice-register text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">野狗新手？</div>
+                <div class="register-text">立即注册，为你提供安全可靠的实时通信云服务。</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/my-account/signup?next=https://docs.wilddog.com" class="btn btn-org-full register-link">免费注册</a>
+                </div>
+              </div>
+              <div class="novice novice-help text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">没找到需要的文档？</div>
+                <div class="register-text">你可以提交工单反馈 或 阅读常见问题</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/wwwapi/account/kf5" target="_blank" class="btn btn-org-empty service-link">客服工单</a><a href="https://wilddog.kf5.com/hc" target="_blank" class="btn btn-gray question-link">常见问题</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+    <div class="outer">
+        undefined
+    </div>
+    <div class="inner">
+        <ul class='sidebar-nav'></ul>
+    </div>
+</aside>
+
+    </div>
+    <div class="back-top-content">
+      <div class="back-top"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/public.js"></script>
+
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/search.js"></script>
+<!-- endbuild -->
+
+<!-- Google Tag Manager -->
+<script>
+window.addEventListener('load', function() {
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.wilddog.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-53PGC2');
+})
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Algolia -->
+<script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog-sync.js" ></script>
+
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+  <!--   <div id="footer-copyright">
+    &copy; 2018 <a href="https://www.wilddog.com/" target="_blank">野狗</a><br>
+  </div> -->
+    <div id="footer-links">
+		<a href="/overview/index.html" class="footer-link">文档</a>
+		<a href="https://www.wilddog.com/download" class="footer-link">SDK下载</a>
+		<a href="https://www.wilddog.com/product/pricing" class="footer-link">价格</a>
+		<a href="https://life.wilddog.com/wilddog-contact.html" class="footer-link">联系我们</a>
+		<a href="https://wilddog.kf5.com/user/login/?_ga=1.257821899.1360428381.1464868258" class="footer-link">客服工单</a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="mobile-nav-item">
+        <a href="https://github.com/" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <ul class='sidebar-nav'></ul>
+    
+  </div>
+
+</nav>
+</body>
+</html>

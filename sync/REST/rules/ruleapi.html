@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>API 参考 | 开发文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="telephone=no,email=no" name="format-detection">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/sync/REST/rules/ruleapi.html">
+  <!-- Alternative links -->
+  
+    
+  
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="/images/favicon.png" sizes="24x24">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="开发文档">
+  <!-- Open Graph -->
+  <meta name="description" content="Rule (Type).read定义 对指定路径赋予读取数据的权限。 说明 读取规则是Wilddog数据库中一种安全规则。该规则是面向路径设计的，意味着不同路径可以设置不同的读取规则。例如： &amp;quot;.read&amp;quot;: &amp;quot;auth != null &amp;amp;&amp;amp; auth.provider == &amp;apos;weibo&amp;apos;&amp;quot; .read 规则的值类型是字">
+<meta property="og:type" content="website">
+<meta property="og:title" content="API 参考">
+<meta property="og:url" content="http://yoursite.com/sync/REST/rules/ruleapi.html">
+<meta property="og:site_name" content="开发文档">
+<meta property="og:description" content="Rule (Type).read定义 对指定路径赋予读取数据的权限。 说明 读取规则是Wilddog数据库中一种安全规则。该规则是面向路径设计的，意味着不同路径可以设置不同的读取规则。例如： &amp;quot;.read&amp;quot;: &amp;quot;auth != null &amp;amp;&amp;amp; auth.provider == &amp;apos;weibo&amp;apos;&amp;quot; .read 规则的值类型是字">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-06-21T12:46:00.172Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="API 参考">
+<meta name="twitter:description" content="Rule (Type).read定义 对指定路径赋予读取数据的权限。 说明 读取规则是Wilddog数据库中一种安全规则。该规则是面向路径设计的，意味着不同路径可以设置不同的读取规则。例如： &amp;quot;.read&amp;quot;: &amp;quot;auth != null &amp;amp;&amp;amp; auth.provider == &amp;apos;weibo&amp;apos;&amp;quot; .read 规则的值类型是字">
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="https://www.wilddog.com" id="logo"></a>
+    </h1>
+    <div class="menu-ctrl" style="display: none;">
+      <span class="menu-ctrl-line menu-ctrl-line-t"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-m"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-b"></span>
+    </div>
+    <nav id="main-nav">
+      <a href="/overview/index.html" class="main-nav-link">概览</a>
+      <a href="/sync/Web/index.html" class="main-nav-link">实时通信引擎</a>
+      <a href="/sms/index.html" class="main-nav-link">智能短信</a>
+      <a href="/auth/Web/index.html" class="main-nav-link">身份认证</a>
+      
+      
+      
+      
+    </nav>
+    <div class="searchbar">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+        <span class="serach-placeholder">搜索</span>
+      </div>
+    </div>
+    <div class="searchbar-inputting">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+      </div>
+      <form accept-charset="utf-8" action="/result/index.html">
+        <input type="search" class="search-input" placeholder="搜索" name="keyword">
+      </form>
+      <span class="close-search"><img src="/images/close.svg" alt=""></span>
+    </div>
+    <div class="header-info pull-right">
+        <span class="pull-left"><img src="" alt="" class="img-circle profile-avatar" width="24" height="24"></span>
+        <span class="user-email"></span>
+        <span class="arr-down icon-48"></span>
+        <ul class="drop-menu clearfix">
+            <li class="drop-menu-item header-item-profile col-sm-6 text-center">
+                <a href="https://www.wilddog.com/info/info" class="header-item-link">
+                    <span class="header-item-icon icon-profile">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m281 366c-2 0-4-1-6-2-2-2-2-5-2-7l15-75c0-2 1-3 2-4l129-129c19-19 52-19 71 0 10 9 15 22 15 36 0 13-5 26-15 35l-128 129c-2 1-3 2-4 2l-76 15c0 0-1 0-1 0z m22-79l-12 61 61-12 127-127c7-6 10-15 10-24 0-10-3-19-10-25-13-13-36-13-49 0z m7 73c-3 0-6-2-7-5-1-4-4-8-8-11-3-4-7-6-11-8-4-2-6-6-4-10 1-4 6-6 10-5 6 3 12 7 17 12 4 4 8 10 11 17 1 4-1 8-5 10-1 0-2 0-3 0z m47-9c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 10 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m126-126c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 9 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m-234-118l-109 0c-5 0-8-3-8-7 0-5 3-8 8-8l109 0c4 0 8 3 8 8 0 4-4 7-8 7z m-55 184c-58 0-106-46-106-103l0-85c0-57 48-103 106-103 59 0 107 46 107 103l0 85c0 57-48 103-107 103z m0-275c-50 0-91 39-91 87l0 85c0 48 41 88 91 88 50 0 91-40 91-88l0-85c0-48-41-87-91-87z m187 489l-373 0c-5 0-8-3-8-7l0-117c0-70 59-127 131-127 5 0 8 3 8 8 0 4-3 7-8 7-64 0-115 50-115 112l0 109 357 0 0-109c0-5 4-8 8-8 4 0 8 3 8 8l0 117c0 4-4 7-8 7z"></path></svg>
+                    </span>
+                    <span class="header-item-title">个人中心</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-confirm col-sm-6 text-center">
+                <a href="https://www.wilddog.com/pay/trade-entry" class="header-item-link">
+                    <span class="header-item-icon icon-confirm">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m15 188l-15 0 0-114c0-23 19-42 42-42l257 0c23 0 42 19 42 42l0 66-15 0 0-66c0-15-12-27-27-27l-257 0c-15 0-27 12-27 27z m455 286l-428 0c-23 0-42-19-42-43l0-257c0-23 19-42 42-42l428 0c23 0 42 19 42 42l0 257c0 24-19 43-42 43z m-428-327c-15 0-27 12-27 27l0 257c0 15 12 28 27 28l428 0c15 0 27-13 27-28l0-257c0-15-12-27-27-27l-428 0z m378 195c-22 0-39-18-39-39 0-22 17-39 39-39 21 0 39 17 39 39 0 21-18 39-39 39z m0-63c-14 0-24 11-24 24 0 13 10 24 24 24 13 0 24-11 24-24 0-13-11-24-24-24z"></path></svg>
+                    </span>
+                    <span class="header-item-title">财务</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-doc col-sm-6 text-center">
+                <a href="https://docs.wilddog.com/overview/index.html" class="header-item-link">
+                    <span class="header-item-icon icon-icon-v-05">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m100 232l305 0 0 17-305 0z m0 82l305 0 0 17-305 0z m0 83l305 0 0 17-305 0z m152-380c22 0 42 13 50 33 3 6 9 10 16 10l18 0 0 59-167 0 0-59 18 0c6 0 13-4 15-10 9-20 29-33 50-33m0-17c-29 0-54 18-65 43l-35 0 0 93 201 0 0-93-35 0c-11-25-36-43-66-43z m174 503l-348 0c-43 0-78-35-78-78l0-276c0-44 35-79 78-79l48 0 0 17-48 0c-34 0-61 28-61 62l0 276c0 34 27 61 61 61l348 0c34 0 62-27 62-61l0-276c0-34-28-62-62-62l-47 0 0-17 47 0c44 0 79 35 79 79l0 276c0 43-35 78-79 78z"></path></svg>
+                    </span>
+                    <span class="header-item-title">文档</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-service col-sm-6 text-center">
+                <a href="https://www.wilddog.com/wwwapi/account/kf5" class="header-item-link">
+                    <span class="header-item-icon icon-service">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m256 16c132 0 240 108 240 240 0 132-108 240-240 240-132 0-240-108-240-240 0-132 108-240 240-240m0-16c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m0 355c-4 0-8-4-8-8l0-24c0-35 10-54 44-78 24-15 36-35 36-59 0-36-32-64-72-64-40 0-72 29-72 64 0 5-3 8-8 8-4 0-8-3-8-8 0-44 39-80 88-80 49 0 88 35 88 80 0 30-14 54-43 72-29 22-37 35-37 65l0 24c0 4-4 8-8 8z m0 79c-4 0-8-3-8-8l0-37c0-4 4-8 8-8 4 0 8 4 8 8l0 37c0 5-4 8-8 8z"></path></svg>
+                    </span>
+                    <span class="header-item-title">客服工单</span>
+                </a>
+            </li>
+            <li class="drop-menu-item logout col-sm-12 text-center">
+                <a href="" class="header-item-link logout-btn">退出登录</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="header-user pull-right">
+        <li class="pull-left login-tab"><a href="" class="login">登录</a></li>
+        <li class="pull-right register-tab"><a href="" class="btn btn-org-empty register">免费注册</a></li>
+    </ul>
+  </div>
+</header>
+<div class="mask fadeHide"></div>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">
+                  API 参考
+                  <span class="edit-doc-source">
+                    <a href="https://github.com/WildDogTeam/wilddog-doc2/blob/master/source/sync/REST/rules/ruleapi.md" class="edit-doc-link" title="改进本文">
+                    <svg version="1.1" width="16px" height="16px" viewBox="200.38 -94.272 16 16">
+                      <path fill="#999999" class="github" d="M208.38-94.272c-4.42,0-8,3.671-8,8.202c0,3.63,2.29,6.695,5.47,7.782c0.4,0.072,0.55-0.174,0.55-0.39
+                      c0-0.195-0.01-0.841-0.01-1.528c-2.01,0.379-2.53-0.502-2.69-0.964c-0.09-0.236-0.48-0.964-0.82-1.159
+                      c-0.28-0.154-0.68-0.533-0.01-0.543c0.63-0.01,1.08,0.595,1.23,0.841c0.72,1.241,1.87,0.892,2.33,0.677
+                      c0.07-0.533,0.28-0.892,0.51-1.097c-1.78-0.205-3.64-0.913-3.64-4.05c0-0.892,0.31-1.63,0.82-2.204
+                      c-0.08-0.205-0.36-1.046,0.08-2.174c0,0,0.67-0.215,2.2,0.841c0.64-0.185,1.32-0.277,2-0.277s1.36,0.092,2,0.277
+                      c1.53-1.066,2.2-0.841,2.2-0.841c0.44,1.128,0.16,1.969,0.08,2.174c0.51,0.574,0.82,1.302,0.82,2.204c0,3.148-1.87,3.845-3.65,4.05
+                      c0.29,0.256,0.54,0.748,0.54,1.517c0,1.097-0.01,1.979-0.01,2.256c0,0.215,0.15,0.472,0.55,0.39c3.256-1.127,5.449-4.258,5.45-7.782
+                      C216.38-90.601,212.8-94.272,208.38-94.272z"/>
+                    </svg><span class="article-edit-link">编辑文档</span></a>
+                  </span>
+                </h1>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="Rule-Type" class="top-heading article-heading"><a href="#Rule-Type" class="headerlink" title="Rule (Type)"></a>Rule (<em>Type</em>)</h2><h3 id="read" class="article-heading"><a href="#read" class="headerlink" title=".read"></a>.read</h3><p>定义</p>
+<p>对指定路径赋予读取数据的权限。</p>
+<p>说明</p>
+<p>读取规则是Wilddog数据库中一种安全规则。该规则是面向路径设计的，意味着不同路径可以设置不同的读取规则。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.read&quot;: &quot;auth != null &amp;&amp; auth.provider == &apos;weibo&apos;&quot;</span><br></pre></td></tr></table></figure>
+<p>.read 规则的值类型是字符串，这个表达式使用Javascript 语法。如果表达式的值为true 代表这个路径是可以读取， 而且它的所有子节点也是可以读取的。值为false 则不能读取数据。</p>
+<p>.read对除了newData外的所有Wilddog变量可用。</p>
+<hr>
+<h3 id="write" class="article-heading"><a href="#write" class="headerlink" title=".write"></a>.write</h3><p>定义</p>
+<p>对指定路径赋予写数据的权限。</p>
+<p>说明</p>
+<p>写规则是Wilddog 数据库中一种安全规则。该规则是面向路径设计的，意味着不同路径可以设置不同的写规则。例如：</p>
+<p>.write 规则的值类型是字符串，这个表达式使用Javascript 语法。如果表达式的值为true 代表这个路径是可以写， 而且它的所有子节点也是可以写的。值为false 则不能写数据。</p>
+<p>.write规则对Wilddog所有的Rule变量可用。</p>
+<hr>
+<h3 id="validate" class="article-heading"><a href="#validate" class="headerlink" title=".validate"></a>.validate</h3><p>定义</p>
+<p>.write规则获得权限后使用，以确保所写的数据符合特定的模式。</p>
+<p>说明</p>
+<p>.write 规则获得权限后使用，以确保所写的数据符合特定的模式。除此之外，.write 获得权限后，.validate 规则必须取得验证成功。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.hasChildren([&apos;name&apos;, &apos;age&apos;])&quot;</span><br></pre></td></tr></table></figure>
+<p>.validate 规则的值类型是字符串，这个表达式使用的Javascript语法。</p>
+<p>.validate 规则对Wilddog所有的Rule变量可用。</p>
+<hr>
+<h3 id="indexOn" class="article-heading"><a href="#indexOn" class="headerlink" title=".indexOn"></a>.indexOn</h3><p>定义</p>
+<p>为数据添加索引，提高查询效率。</p>
+<p>说明</p>
+<p>.indexOn 规则可以为指定的节点建立索引，以此来提高查询效率。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;dinosaurs&quot;: &#123;</span><br><span class="line">      &quot;.indexOn&quot;: [&quot;height&quot;, &quot;length&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.indexOn 规则的值类型是字符串，或者是字符串数组。 节点的名称key和优先级priority默认建立索引，不需要额外设置。 关于 .indexOn 规则更多介绍，请参考规则表达式文档 <a href="/sync/REST/rules/index.html">数据索引</a> 部分。</p>
+<hr>
+<h2 id="Rule-Variables" class="article-heading"><a href="#Rule-Variables" class="headerlink" title="Rule (Variables)"></a>Rule (<em>Variables</em>)</h2><h3 id="auth" class="article-heading"><a href="#auth" class="headerlink" title="auth"></a>auth</h3><p>定义</p>
+<p>这个变量与用户是否使用认证有关。使用认证就是调用auth相关的方法，比如authWithPassword()。 如果客户端已经登录认证，这个变量中包含token信息，否则为null。</p>
+<p>说明</p>
+<p>Wilddog 认证</p>
+<p>野狗内置几种认证方式。你可以轻松使用它们来生成tokens。在使用一种认证方式和，auth变量包含以下内容：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>provider</td>
+<td>认证提供商 (“password”, “anonymous”, “qq”, “weibo”, “weixin”, “weixinmp” ,”phone” or “weapp”)。</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>一个唯一的用户id，保证独一无二。</td>
+</tr>
+<tr>
+<td>token</td>
+<td>用户的其他属性 ,包括邮箱,邮箱验证,用户昵称以及用户的所有自定义属性。</td>
+</tr>
+</tbody>
+</table>
+<p>举一个例子, 有一个博客的评论， 只能修改和删除评论， 我们配置以下规则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;.read&quot;: true,</span><br><span class="line">    &quot;$comment&quot;: &#123;</span><br><span class="line">      &quot;.write&quot;: &quot;!data.exists() &amp;&amp; newData.child(&apos;user_id&apos;).val() == auth.uid&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果要求只有微博登修改，只需要轻松修改rule配置， 就能搞定。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;.read&quot;: true,</span><br><span class="line">    &quot;$comment&quot;: &#123;</span><br><span class="line">      &quot;.write&quot;: &quot;!data.exists() &amp;&amp; auth.provider == &apos;weibo&apos;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中token变量还包括以下字段:</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>用户绑定的主邮箱</td>
+</tr>
+<tr>
+<td>email_verified</td>
+<td>用户是否验证过主邮箱</td>
+</tr>
+<tr>
+<td>name</td>
+<td>用户的昵称</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>用户绑定的手机号</td>
+</tr>
+<tr>
+<td>phone_number_verified</td>
+<td>用户是否验证过手机号</td>
+</tr>
+</tbody>
+</table>
+<p>如果要求只有用户验证过邮箱才能进行数据读取可以修改rule规则配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;.read&quot;: true,</span><br><span class="line">    &quot;.write&quot;:&quot;auth.token.email_verified == true&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面java版生成工具依赖</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.wilddog&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;wilddog-token-generator&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="location" class="article-heading"><a href="#location" class="headerlink" title="$location"></a>$location</h3><p>定义</p>
+<p>一个可以用来在规则表达式中使用的代表位置的变量。</p>
+<p>说明</p>
+<p>当你使用$location在你规则表达式，这个变量是以<code>$</code>开头，用于替换实际读写子节点的名称。假设我们希望给每个用户读写他们自己的<code>/users/</code>的位置，我们可以使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;users&quot;: &#123;</span><br><span class="line">      &quot;$user&quot;: &#123;</span><br><span class="line">        &quot;.read&quot;: &quot;auth.uid == $user&quot;,</span><br><span class="line">        &quot;.write&quot;: &quot;auth.uid == $user&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当一个用户试图访问<code>/users/barney</code>，位置变量$user将匹配到<code>&quot;barney&quot;</code>。所以.read 规则将判断 <code>auth.uid == &#39;barney&#39;</code>。</p>
+<hr>
+<h3 id="now" class="article-heading"><a href="#now" class="headerlink" title="now"></a>now</h3><p>定义</p>
+<p>包含一个在 Wilddog 服务器的 Unix 时间毫秒数。</p>
+<p>说明</p>
+<p>包含一个在 Wilddog 服务器的 Unix 时间毫秒数。例如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;users&quot;: &#123;</span><br><span class="line">      &quot;$user&quot;: &#123;</span><br><span class="line">        &quot;created&quot;: &#123;</span><br><span class="line">          &quot;.validate&quot;: &quot;newData.val() &lt; now&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="root" class="article-heading"><a href="#root" class="headerlink" title="root"></a>root</h3><p>定义</p>
+<p>你的Wilddog数据库中的根节点的数据快照<code>RuleDataSnapshot</code></p>
+<p>说明</p>
+<p>root变量标识的<code>RuleDataSnapshot</code>，对应着你的Wilddog数据库根节点。你能够在读任何数据的时候在表达式中使用它。例如：你想允许用户仅在 <code>/users//active</code>设置为true的时候读取 <code>/comments</code>。我们这样使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;comments&quot;: &#123;</span><br><span class="line">      &quot;.read&quot;: &quot;root.child(&apos;users&apos;).child(auth.uid).child(&apos;active&apos;).val() == true&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="newData" class="article-heading"><a href="#newData" class="headerlink" title="newData"></a>newData</h3><p>定义</p>
+<p>一个数据快照<code>RuleDataSnapshot</code>对应的将要被写的数据。</p>
+<p>说明</p>
+<p>在.write和.validate规则中使用，newData变量允许代表一个将要被写的<code>RuleDataSnapshot</code>，也可能是一个从其他节点移过来的<code>RuleDataSnapshot</code>。下面的例子，要求每个用户必须包含name和age字段：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;users&quot;: &#123;</span><br><span class="line">      &quot;$user&quot;: &#123;</span><br><span class="line">        &quot;.read&quot;: true,</span><br><span class="line">        &quot;.write&quot;: true,</span><br><span class="line">        &quot;.validate&quot;: &quot;newData.hasChildren([&apos;name&apos;, &apos;age&apos;])&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于newData合并包括存在的数据和新添加的数据。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var fredRef = new Wilddog(&quot;https://samplechat.wilddogio.com/users/fred&quot;);</span><br><span class="line">// 可行</span><br><span class="line">fredRef.set(&#123; name: &quot;Fred&quot;, age: 19 &#125;);</span><br><span class="line">// 可行</span><br><span class="line">fredRef.child(&quot;age&quot;).set(27);</span><br><span class="line">// 因为.validate不再为真，所以不可行</span><br><span class="line">fredRef.child(&quot;name&quot;).remove();</span><br><span class="line">newData变量在.read规则中不可用，因为没有新数据被写入，只能用data变量。</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="RuleDataSnapshot-Methods" class="article-heading"><a href="#RuleDataSnapshot-Methods" class="headerlink" title="RuleDataSnapshot (Methods)"></a>RuleDataSnapshot (<em>Methods</em>)</h2><h3 id="val" class="article-heading"><a href="#val" class="headerlink" title="val()"></a>val()</h3><p>定义</p>
+<p>String val()</p>
+<p>说明</p>
+<p>从 <code>RuleDataSnapshot</code>获取原生类型 (<code>string</code>, <code>number</code>, <code>boolean</code>, or <code>null</code>)。与DataSnapshot.val()不一样，<code>RuleDataSnapshot</code>调用 <code>val()</code>方法将不会返回一个<code>object</code>，就算包含子节点也这样。</p>
+<p>返回值</p>
+<p>String, Number, Boolean, Null RuleDataSnapshot 的原生类型数据。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.read&quot;: &quot;data.child(&apos;isReadable&apos;).val() == true&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="child" class="article-heading"><a href="#child" class="headerlink" title="child()"></a>child()</h3><p>定义</p>
+<p>RuleDataSnapshot child()</p>
+<p>说明</p>
+<p>通过相对路径获取<code>RuleDataSnapshot</code>的子节点。</p>
+<p>参数</p>
+<ul>
+<li>childPath <code>String</code> 子节点的相对路径。</li>
+</ul>
+<p>返回值</p>
+<p>子节点的 <code>RuleDataSnapshot</code></p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.read&quot;: &quot;data.child(&apos;isReadable&apos;).val() == true&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="parent" class="article-heading"><a href="#parent" class="headerlink" title="parent()"></a>parent()</h3><p>定义</p>
+<p>RuleDataSnapshot parent()</p>
+<p>说明</p>
+<p>通过相对路径获取<code>RuleDataSnapshot</code>的父节点。</p>
+<p>返回值</p>
+<p>父节点的 <code>RuleDataSnapshot</code>.</p>
+<hr>
+<h3 id="hasChild" class="article-heading"><a href="#hasChild" class="headerlink" title="hasChild()"></a>hasChild()</h3><p>定义</p>
+<p>Boolean hasChild(String childPath)</p>
+<p>说明</p>
+<p>判断<code>RuleDataSnapshot</code> 是否存在子节点。</p>
+<p>参数</p>
+<p>childPath <code>String</code> 潜在子节点的相对路径。</p>
+<p>返回值</p>
+<p>Boolean 存在返回<code>true</code>，否则<code>false</code></p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.hasChild(&apos;name&apos;)&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="hasChildren" class="article-heading"><a href="#hasChildren" class="headerlink" title="hasChildren()"></a>hasChildren()</h3><p>定义</p>
+<p>Boolean hasChildren([children]);</p>
+<p>说明</p>
+<p>判断当前节点是否存在指定一组子节点。</p>
+<p>参数</p>
+<p>children <code>Array</code> *optional 所有存在子节点的数组。</p>
+<p>返回值</p>
+<p>Boolean</p>
+<p>pathList List 路径数组 一组子节点路径，例如[‘a’,’b’,’c’]</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.hasChildren()&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.hasChildren([&apos;name&apos;, &apos;age&apos;])&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="exists" class="article-heading"><a href="#exists" class="headerlink" title="exists()"></a>exists()</h3><p>定义</p>
+<p>Boolean exists()</p>
+<p>说明</p>
+<p>判断这个<code>RuleDataSnapshot</code>是否存在，包含数据返回true。等价于<code>data.val() != null</code></p>
+<p>返回值</p>
+<p>Boolean 包含返回<code>true</code>，否则返回<code>false</code>。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.write&quot;: &quot;!data.exists()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="getPriority" class="article-heading"><a href="#getPriority" class="headerlink" title="getPriority()"></a>getPriority()</h3><p>定义</p>
+<p>String getPriority()</p>
+<p>说明</p>
+<p>获取<code>RuleDataSnapshot</code>的优先级。</p>
+<p>返回值</p>
+<p>String, Number, Null</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.getPriority() != null&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="isNumber" class="article-heading"><a href="#isNumber" class="headerlink" title="isNumber()"></a>isNumber()</h3><p>定义</p>
+<p>Boolean isNumber()</p>
+<p>说明</p>
+<p>判断获取<code>RuleDataSnapshot</code>的是否是数字类型。</p>
+<p>返回值</p>
+<p>Boolean 是数字为<code>true</code> 否则返回 <code>false</code>.</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.child(&apos;age&apos;).isNumber()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="isString" class="article-heading"><a href="#isString" class="headerlink" title="isString()"></a>isString()</h3><p>定义</p>
+<p>Boolean isString()</p>
+<p>说明</p>
+<p>判断获取<code>RuleDataSnapshot</code>的是否是字符串类型。</p>
+<p>返回值</p>
+<p>Boolean 是字符串为<code>true</code> 否则返回 <code>false</code>.</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.child(&apos;name&apos;).isString()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="isBoolean" class="article-heading"><a href="#isBoolean" class="headerlink" title="isBoolean()"></a>isBoolean()</h3><p>定义</p>
+<p>Boolean isBoolean()</p>
+<p>说明</p>
+<p>判断获取<code>RuleDataSnapshot</code>的是否是布尔类型。</p>
+<p>返回值</p>
+<p>Boolean 是布尔为<code>true</code> 否则返回 <code>false</code>.</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.child(&apos;active&apos;).isBoolean()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="String-Methods" class="article-heading"><a href="#String-Methods" class="headerlink" title="String (Methods)"></a>String (<em>Methods</em>)</h2><h3 id="length" class="article-heading"><a href="#length" class="headerlink" title="length()"></a>length()</h3><p>定义</p>
+<p>字符串的长度。</p>
+<p>说明</p>
+<p>返回字符串的长度。</p>
+<p>返回值</p>
+<p>Number</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().length() &gt;= 10&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="contains" class="article-heading"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h3><p>定义</p>
+<p>Boolean contains(String substring)</p>
+<p>说明</p>
+<p>判断字符串是否包含指定的子串。</p>
+<p>参数</p>
+<ul>
+<li>substring <code>String</code> 指定的子串。</li>
+</ul>
+<p>返回值</p>
+<p>Boolean</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().contains(&apos;@&apos;)&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="startsWith" class="article-heading"><a href="#startsWith" class="headerlink" title="startsWith()"></a>startsWith()</h3><p>定义</p>
+<p>Boolean startsWith(String substring)</p>
+<p>说明</p>
+<p>以一个子串开头。</p>
+<p>参数</p>
+<ul>
+<li>substring <code>String</code></li>
+</ul>
+<p>返回值</p>
+<p>Boolean</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;$conversation&quot;:&#123;</span><br><span class="line">      &quot;$users&quot;: &#123;</span><br><span class="line">        &quot;.read&quot;: &quot;$users.startsWith(&apos;zhangsan&apos;)&quot;,</span><br><span class="line">        &quot;.write&quot;: &quot;$users.startsWith(&apos;zhangsan&apos;)&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="endsWith" class="article-heading"><a href="#endsWith" class="headerlink" title="endsWith()"></a>endsWith()</h3><p>定义</p>
+<p>Boolean endsWith(String substring)</p>
+<p>说明</p>
+<p>以一个子串开头结尾。</p>
+<p>参数</p>
+<ul>
+<li>substring <code>String</code></li>
+</ul>
+<p>返回值</p>
+<p>Boolean</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;$conversation&quot;:&#123;</span><br><span class="line">      &quot;$users&quot;: &#123;</span><br><span class="line">        &quot;.read&quot;: &quot;$users.endsWith(&apos;zhangsan&apos;)&quot;,</span><br><span class="line">        &quot;.write&quot;: &quot;$users.endsWith(&apos;zhangsan&apos;)&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="replace" class="article-heading"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h3><p>定义</p>
+<p>String replace(String substring, String replacement)</p>
+<p>说明</p>
+<p>替换第一个匹配的字符串。</p>
+<p>参数</p>
+<ul>
+<li>substring <code>String</code> 查找的子字符串。</li>
+<li>replacement <code>String</code> 替换的子字符串。</li>
+</ul>
+<p>返回值</p>
+<p>String 返回替换后的新字符串。</p>
+<p>示例</p>
+<p>假设我们在<code>/whitelist/</code> 节点有一个email白名单列表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;user&quot;: &#123;</span><br><span class="line">   &quot;$uid&quot;: &#123;</span><br><span class="line">     &quot;email&quot;: &lt;email&gt;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> &quot;whitelist&quot;: &#123;</span><br><span class="line">   &quot;fred@gmail%2ecom&quot;: true,</span><br><span class="line">   &quot;barney@aol%2ecom&quot;: true</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以如下制定rule规则，只允许email在白名单中的用户。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;users&quot;: &#123;</span><br><span class="line">      &quot;$uid&quot;: &#123;</span><br><span class="line">        &quot;.read&quot;: &quot;true&quot;,</span><br><span class="line">        &quot;.write&quot;: &quot;root.child(&apos;whitelist&apos;).child(newData.child(&apos;email&apos;).val().replace(&apos;.&apos;, &apos;%2e&apos;)).exists()&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="toLowerCase" class="article-heading"><a href="#toLowerCase" class="headerlink" title="toLowerCase()"></a>toLowerCase()</h3><p>定义</p>
+<p>String toLowerCase()</p>
+<p>说明</p>
+<p>返回小写的字符串</p>
+<p>返回值</p>
+<p>小写字符串。</p>
+<p>示例</p>
+<hr>
+<h3 id="toUpperCase" class="article-heading"><a href="#toUpperCase" class="headerlink" title="toUpperCase()"></a>toUpperCase()</h3><p>定义</p>
+<p>String toUpperCase()</p>
+<p>说明</p>
+<p>返回大写的字符串。</p>
+<p>返回值</p>
+<p><code>string</code> 大写的字符串。</p>
+<p>示例</p>
+<hr>
+<h3 id="matches" class="article-heading"><a href="#matches" class="headerlink" title="matches()"></a>matches()</h3><p>定义</p>
+<p>Boolean matches(String regex)</p>
+<p>说明</p>
+<p>可以利用正则表达式校验客户端提供的字符串。用string.matches(pattern)来验证指定字符串是否符合规则表达式。我们的正则表达式的语法与传统规则表达式不完全一致：</p>
+<p><code>+</code> <code>*</code> <code>.</code> <code>( )</code> <code>[ ]</code> <code>{ }</code> <code>\</code> 与传统语法一致</p>
+<p><code>^</code> and <code>$</code>只被用来匹配首尾</p>
+<p>只支持 <code>i</code> (忽略大小写) 修饰符</p>
+<p>正则表达式以/pattern/的形式被引入规则表达式。被用来检验一个字符串是否符合正则表达式。下面的校验规则用来检验新的字符串是否以’foo’开头。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &apos;newData.val().matches(&quot;^foo&quot;)&apos;</span><br></pre></td></tr></table></figure>
+<p>下面是 Wilddog 所支持的正则符号：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\s \w \d \S \W \D</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符；匹配任何字类字符；数字字符匹配；匹配任何非空白字符；与任何非单词字符匹配；非数字字符匹配。</td>
+</tr>
+<tr>
+<td>\</td>
+<td>将下一字符标记为特殊字符、文本、反向引用或八进制转义符</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配输入字符串开始的位置</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入字符串结尾的位置</td>
+</tr>
+<tr>
+<td>*</td>
+<td>零次或多次匹配前面的字符或子表达式</td>
+</tr>
+<tr>
+<td>+</td>
+<td>一次或多次匹配前面的字符或子表达式</td>
+</tr>
+<tr>
+<td>?</td>
+<td>零次或一次匹配前面的字符或子表达式</td>
+</tr>
+<tr>
+<td>&#46;</td>
+<td>匹配除“\n”之外的任何单个字符</td>
+</tr>
+<tr>
+<td>i</td>
+<td>一个以’i’结尾的正则表达式表示忽略大小写</td>
+</tr>
+<tr>
+<td>(pattern)</td>
+<td>匹配 pattern 并捕获该匹配的子表达式</td>
+</tr>
+<tr>
+<td>a\&#124;b</td>
+<td>匹配 a 或 b</td>
+</tr>
+<tr>
+<td>[akz]</td>
+<td>字符集，匹配包含的任一字符。/[ABCDEF]/匹配a-f中的大写字母</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>一个字符区间, 匹配包含在指定范围内的所有字母。/[0-9A-F]/匹配十六进制字符串</td>
+</tr>
+<tr>
+<td>[^0-9]</td>
+<td>以’^’开头，匹配不在指定字符集中的字符</td>
+</tr>
+</tbody>
+</table>
+<p>在 Wilddog 安全规则中,正则表达式只允许你用来进行匹配而不是获取字符串。</p>
+<p>参数</p>
+<ul>
+<li>regex <code>String</code> 正则表达式</li>
+</ul>
+<p>返回值</p>
+<p>Boolean 如果满足正则表达式返回true,否则返回false。</p>
+<p>示例</p>
+<p>新数据需要满足是字符串，并且字符串是1900-2099年间的YYYY-MM-DD格式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().matches(&apos;^(19|20)[0-9][0-9][-\\/. ](0[1-9]|1[012])[-\\/. ](0[1-9]|[12][0-9]|3[01])$&apos;)&quot;</span><br></pre></td></tr></table></figure>
+<p>校验新数据符合email格式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().matches(&apos;^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]&#123;2,4&#125;$&apos;)&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Operators-Methods" class="article-heading"><a href="#Operators-Methods" class="headerlink" title="Operators (Methods)"></a>Operators (<em>Methods</em>)</h2><h3 id="" class="article-heading"><a href="#" class="headerlink" title="+"></a>+</h3><p>符号</p>
+<p>加法</p>
+<p>定义</p>
+<p>用作变量加法运算或字符串连接。</p>
+<p>说明</p>
+<p>因为Wilddog路径中keys总是string字符串，所以尝试比较 $variable和一个数字一定会失败。可以通过”+”把nubmber转化为string。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.write&quot;: &quot;newData.val() == data.val() + 1&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;root.child(&apos;room_names/&apos; + $room_id).exists()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-1" class="article-heading"><a href="#-1" class="headerlink" title="-"></a>-</h3><p>符号</p>
+<p>取反 或 减号</p>
+<p>定义</p>
+<p>取反或剪法运算。</p>
+<p>说明</p>
+<p>下面的校验规则用来检查新数据是否是原数据的负值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.val() == -(data.val())&quot;</span><br></pre></td></tr></table></figure>
+<p>下面的校验规则用来保证只有过去十分钟之内的信息才能被读取。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.read&quot;: &quot;newData.child(&apos;timestamp&apos;).val() &gt; (now - 600000)&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-2" class="article-heading"><a href="#-2" class="headerlink" title="*"></a>*</h3><p>符号</p>
+<p>乘法</p>
+<p>定义</p>
+<p>取乘积</p>
+<p>说明</p>
+<p>下面的校验规则用来验证新的值是否等于price和quantity的乘积。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.val() == data.child(&apos;price&apos;).val() * data.child(&apos;quantity&apos;).val()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-3" class="article-heading"><a href="#-3" class="headerlink" title="/"></a>/</h3><p>符号</p>
+<p>除法</p>
+<p>定义</p>
+<p>取商</p>
+<p>说明</p>
+<p>下面的校验规则保证被存储的值是所有数值的平均值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.val() == data.parent().child(&apos;sum&apos;).val() / data.parent().child(&apos;numItems&apos;).val()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-4" class="article-heading"><a href="#-4" class="headerlink" title="%"></a>%</h3><p>符号</p>
+<p>取模</p>
+<p>定义</p>
+<p>取模</p>
+<p>说明</p>
+<p>下面的校验规则保证userId是偶数才具备写权限。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;$user_id&quot;: &#123;</span><br><span class="line">    &quot;.write&quot;: &quot;$user_id % 2 == 0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-5" class="article-heading"><a href="#-5" class="headerlink" title="=="></a>==</h3><p>符号</p>
+<p>等于</p>
+<p>定义</p>
+<p>用来检验在规则表达式中两个变量是否具有相同值。</p>
+<p>说明</p>
+<p>下面校验规则保证用户帐户的所有者才具备写权限。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;users&quot;: &#123;</span><br><span class="line">  &quot;.write&quot;: &quot;$user_id == auth.uid&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-6" class="article-heading"><a href="#-6" class="headerlink" title="!="></a>!=</h3><p>符号</p>
+<p>不等于</p>
+<p>定义</p>
+<p>不等于</p>
+<p>说明</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.read&quot;: &quot;auth != null&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="amp-amp" class="article-heading"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h3><p>符号</p>
+<p>与</p>
+<p>定义</p>
+<p>与操作</p>
+<p>说明</p>
+<p>下面的校验规则用来检验新数据是小于100个字符的字符串。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().length &lt; 100&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-7" class="article-heading"><a href="#-7" class="headerlink" title="||"></a>||</h3><p>符号</p>
+<p>或</p>
+<p>定义</p>
+<p>或操作</p>
+<p>说明</p>
+<p>下面的校验规则保证我们可以删除或者创建数据，但是不能更新数据。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.write&quot;: &quot;!data.exists() || !newData.exists()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-8" class="article-heading"><a href="#-8" class="headerlink" title="!"></a>!</h3><p>符号</p>
+<p>非</p>
+<p>定义</p>
+<p>非操作</p>
+<p>说明</p>
+<p>在规则表达式中，!常被用来查看数据是否已经被写到节点中。 下面的校验规则规定，只有在指定的节点中没有数据的时候才能写入。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.write&quot;: &quot;!data.exists()&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="gt" class="article-heading"><a href="#gt" class="headerlink" title="&gt;"></a>&gt;</h3><p>符号</p>
+<p>大于</p>
+<p>定义</p>
+<p>大于</p>
+<p>说明</p>
+<p>下面的校验规则规定写入的数据不能为空。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().length &gt; 0&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="lt" class="article-heading"><a href="#lt" class="headerlink" title="&lt;"></a>&lt;</h3><p>符号</p>
+<p>小于</p>
+<p>定义</p>
+<p>小于</p>
+<p>说明</p>
+<p>下面的校验规则规定数据需要是字符串并且长度小于20。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().length &lt; 20&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="gt-1" class="article-heading"><a href="#gt-1" class="headerlink" title="&gt;="></a>&gt;=</h3><p>符号</p>
+<p>大于或等于</p>
+<p>定义</p>
+<p>大于或者等于</p>
+<p>说明</p>
+<p>下面的校验规则规定写入的数据不能为空。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isString() &amp;&amp; newData.val().length &gt;= 1&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="lt-1" class="article-heading"><a href="#lt-1" class="headerlink" title="&lt;="></a>&lt;=</h3><p>符号</p>
+<p>小于或等于</p>
+<p>定义</p>
+<p>小于或等于</p>
+<p>说明</p>
+<p>下面的校验规则保证新数据未来不能被添加。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.val() &lt;= now&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="-9" class="article-heading"><a href="#-9" class="headerlink" title="?"></a>?</h3><p>符号</p>
+<p>三元表达式</p>
+<p>定义</p>
+<p>三元表达式</p>
+<p>说明</p>
+<p>问号前面是条件，条件成立第二个表达式被校验，条件不成立第三个表达式被校验。</p>
+<p>下面的校验规则规定，新数据必须是一个数字或者是布尔型值，如果是数字必须大于0。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;.validate&quot;: &quot;newData.isNumber() ? newData.val() &gt; 0 : newData.isBoolean()&quot;</span><br></pre></td></tr></table></figure>
+
+                <time class="article-footer-updated" datetime="2018-06-21T12:46:00.172Z" itemprop="dateModified">上次更新：2018-06-21</time>
+              </div>
+              <div class="toc-content">
+                <aside id="article-toc" role="navigation">
+                  <div class="toc-scroll-content">
+                    <div class="toc-inner">
+                      <span class="slide-dot"></span>
+                      <div id="article-toc-inner">
+                        <strong class="sidebar-title">目录</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rule-Type"><span class="toc-text">Rule (Type)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#read"><span class="toc-text">.read</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#write"><span class="toc-text">.write</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#validate"><span class="toc-text">.validate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indexOn"><span class="toc-text">.indexOn</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rule-Variables"><span class="toc-text">Rule (Variables)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#auth"><span class="toc-text">auth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#location"><span class="toc-text">$location</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#now"><span class="toc-text">now</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root"><span class="toc-text">root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#newData"><span class="toc-text">newData</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RuleDataSnapshot-Methods"><span class="toc-text">RuleDataSnapshot (Methods)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#val"><span class="toc-text">val()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#child"><span class="toc-text">child()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parent"><span class="toc-text">parent()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hasChild"><span class="toc-text">hasChild()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hasChildren"><span class="toc-text">hasChildren()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exists"><span class="toc-text">exists()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getPriority"><span class="toc-text">getPriority()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isNumber"><span class="toc-text">isNumber()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isString"><span class="toc-text">isString()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isBoolean"><span class="toc-text">isBoolean()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-Methods"><span class="toc-text">String (Methods)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#length"><span class="toc-text">length()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contains"><span class="toc-text">contains()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#startsWith"><span class="toc-text">startsWith()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#endsWith"><span class="toc-text">endsWith()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replace"><span class="toc-text">replace()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toLowerCase"><span class="toc-text">toLowerCase()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toUpperCase"><span class="toc-text">toUpperCase()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matches"><span class="toc-text">matches()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operators-Methods"><span class="toc-text">Operators (Methods)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text">+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-text">-</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-2"><span class="toc-text">*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-3"><span class="toc-text">/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-4"><span class="toc-text">%</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-5"><span class="toc-text">==</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-6"><span class="toc-text">!=</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-amp"><span class="toc-text">&amp;&amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-7"><span class="toc-text">||</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-8"><span class="toc-text">!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gt"><span class="toc-text">&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt"><span class="toc-text">&lt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gt-1"><span class="toc-text">&gt;=</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-1"><span class="toc-text">&lt;=</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-9"><span class="toc-text">?</span></a></li></ol></li></ol>
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+                <div class="toc-link-title"></div>
+              </div>
+              <footer class="article-footer">
+                <a href="/sync/REST/rules/index.html" class="article-footer-prev" title="数据索引"><img src='/images/arr-left.svg' class='arr-icon'><div class='page-title'><div>上一节：</div>数据索引 </div></a><a href="/sync/REST/api/introduce.html" class="article-footer-next" title="简介"><div class='page-title'><div class='text-right'>下一节：</div>简介</div><img src='/images/arr-right.svg' class='arr-icon'></a>
+              </footer>
+              <div class="novice novice-register text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">野狗新手？</div>
+                <div class="register-text">立即注册，为你提供安全可靠的实时通信云服务。</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/my-account/signup?next=https://docs.wilddog.com" class="btn btn-org-full register-link">免费注册</a>
+                </div>
+              </div>
+              <div class="novice novice-help text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">没找到需要的文档？</div>
+                <div class="register-text">你可以提交工单反馈 或 阅读常见问题</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/wwwapi/account/kf5" target="_blank" class="btn btn-org-empty service-link">客服工单</a><a href="https://wilddog.kf5.com/hc" target="_blank" class="btn btn-gray question-link">常见问题</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+    <div class="outer">
+        <input type='hidden' value=Web,iOS,Android,Java,C,REST,微信小程序><div class='selected'>REST</div><ul class='platforms'></ul>
+    </div>
+    <div class="inner">
+        <ul class='sidebar-nav'><li class='sidebar-nav-item'><strong class="sidebar-title">Web</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/Web/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/retrieve-data.html" class="sidebar-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/offline-capabilities.html" class="sidebar-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/advance-feature.html" class="sidebar-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/Web/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/Web/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/Web/guide/bestpractice/offline.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Web/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/ruleapi.html" class="sidebar-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/api/App.html" class="sidebar-link" title= App><span class="sidebar-link-text">App</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Sync.html" class="sidebar-link" title= Sync><span class="sidebar-link-text">Sync</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Reference.html" class="sidebar-link" title= Reference><span class="sidebar-link-text">Reference</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Query.html" class="sidebar-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/Web/api/OnDisconnect.html" class="sidebar-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/Web/api/DataSnapshot.html" class="sidebar-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Promise.html" class="sidebar-link" title= Promise><span class="sidebar-link-text">Promise</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Void.html" class="sidebar-link" title= Void><span class="sidebar-link-text">Void</span></a></li><li class='sublist-item'><a href="/sync/Web/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/resources/resources.html" class="sidebar-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/Web/resources/tutorial.html" class="sidebar-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Web/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">iOS</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/iOS/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/retrieve-data.html" class="sidebar-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/offline-capabilities.html" class="sidebar-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/advance-feature.html" class="sidebar-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/iOS/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/iOS/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/iOS/guide/bestpractice/offline.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/iOS/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/ruleapi.html" class="sidebar-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/api/WDGOptions.html" class="sidebar-link" title= WDGOptions><span class="sidebar-link-text">WDGOptions</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGApp.html" class="sidebar-link" title= WDGApp><span class="sidebar-link-text">WDGApp</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGSync.html" class="sidebar-link" title= WDGSync><span class="sidebar-link-text">WDGSync</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGSyncReference.html" class="sidebar-link" title= WDGSyncReference><span class="sidebar-link-text">WDGSyncReference</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGSyncQuery.html" class="sidebar-link" title= WDGSyncQuery><span class="sidebar-link-text">WDGSyncQuery</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGDataSnapshot.html" class="sidebar-link" title= WDGDataSnapshot><span class="sidebar-link-text">WDGDataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGMutableData.html" class="sidebar-link" title= WDGMutableData><span class="sidebar-link-text">WDGMutableData</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGTransactionResult.html" class="sidebar-link" title= WDGTransactionResult><span class="sidebar-link-text">WDGTransactionResult</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGServerValue.html" class="sidebar-link" title= WDGServerValue><span class="sidebar-link-text">WDGServerValue</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGDataEventType.html" class="sidebar-link" title= WDGDataEventType><span class="sidebar-link-text">WDGDataEventType</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/resources/resources.html" class="sidebar-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/iOS/resources/tutorial.html" class="sidebar-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/iOS/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">Android</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/Android/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/retrieve-data.html" class="sidebar-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/offline-capabilities.html" class="sidebar-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/advance-feature.html" class="sidebar-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/Android/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/Android/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/Android/guide/bestpractice/offline.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Android/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/ruleapi.html" class="sidebar-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/api/WilddogOptions.html" class="sidebar-link" title= WilddogOptions><span class="sidebar-link-text">WilddogOptions</span></a></li><li class='sublist-item'><a href="/sync/Android/api/WilddogOptions.Builder.html" class="sidebar-link" title= WilddogOptions.Builder><span class="sidebar-link-text">WilddogOptions.Builder</span></a></li><li class='sublist-item'><a href="/sync/Android/api/WilddogApp.html" class="sidebar-link" title= WilddogApp><span class="sidebar-link-text">WilddogApp</span></a></li><li class='sublist-item'><a href="/sync/Android/api/WilddogSync.html" class="sidebar-link" title= WilddogSync><span class="sidebar-link-text">WilddogSync</span></a></li><li class='sublist-item'><a href="/sync/Android/api/SyncReference.html" class="sidebar-link" title= SyncReference><span class="sidebar-link-text">SyncReference</span></a></li><li class='sublist-item'><a href="/sync/Android/api/SyncReference.CompletionListener.html" class="sidebar-link" title= SyncReference.CompletionListener><span class="sidebar-link-text">SyncReference.CompletionListener</span></a></li><li class='sublist-item'><a href="/sync/Android/api/ChildEventListener.html" class="sidebar-link" title= ChildEventListener><span class="sidebar-link-text">ChildEventListener</span></a></li><li class='sublist-item'><a href="/sync/Android/api/ValueEventListener.html" class="sidebar-link" title= ValueEventListener><span class="sidebar-link-text">ValueEventListener</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Config.html" class="sidebar-link" title= Config><span class="sidebar-link-text">Config</span></a></li><li class='sublist-item'><a href="/sync/Android/api/DataSnapshot.html" class="sidebar-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/Android/api/MutableData.html" class="sidebar-link" title= MutableData><span class="sidebar-link-text">MutableData</span></a></li><li class='sublist-item'><a href="/sync/Android/api/OnDisconnect.html" class="sidebar-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Query.html" class="sidebar-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Transaction.html" class="sidebar-link" title= Transaction><span class="sidebar-link-text">Transaction</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Transaction.Handler.html" class="sidebar-link" title= Transaction.Handler><span class="sidebar-link-text">Transaction.Handler</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Transaction.Result.html" class="sidebar-link" title= Transaction.Result><span class="sidebar-link-text">Transaction.Result</span></a></li><li class='sublist-item'><a href="/sync/Android/api/ServerValue.html" class="sidebar-link" title= ServerValue><span class="sidebar-link-text">ServerValue</span></a></li><li class='sublist-item'><a href="/sync/Android/api/SyncError.html" class="sidebar-link" title= SyncError><span class="sidebar-link-text">SyncError</span></a></li><li class='sublist-item'><a href="/sync/Android/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/resources/resources.html" class="sidebar-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/Android/resources/tutorial.html" class="sidebar-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Android/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">Java</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/Java/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/retrieve-data.html" class="sidebar-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/custom.html" class="sidebar-link" title= 自定义身份认证><span class="sidebar-link-text">自定义身份认证</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/offline-capabilities.html" class="sidebar-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/advance-feature.html" class="sidebar-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/Java/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/Java/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/Java/guide/bestpractice/offline.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Java/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/ruleapi.html" class="sidebar-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/api/AuthResult.html" class="sidebar-link" title= AuthResult><span class="sidebar-link-text">AuthResult</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogOptions.html" class="sidebar-link" title= WilddogOptions><span class="sidebar-link-text">WilddogOptions</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogOptions.Builder.html" class="sidebar-link" title= WilddogOptions.Builder><span class="sidebar-link-text">WilddogOptions.Builder</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogApp.html" class="sidebar-link" title= WilddogApp><span class="sidebar-link-text">WilddogApp</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogAuth.html" class="sidebar-link" title= WilddogAuth><span class="sidebar-link-text">WilddogAuth</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogSync.html" class="sidebar-link" title= WilddogSync><span class="sidebar-link-text">WilddogSync</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogUser.html" class="sidebar-link" title= WilddogUser><span class="sidebar-link-text">WilddogUser</span></a></li><li class='sublist-item'><a href="/sync/Java/api/SyncReference.html" class="sidebar-link" title= SyncReference><span class="sidebar-link-text">SyncReference</span></a></li><li class='sublist-item'><a href="/sync/Java/api/SyncReference.CompletionListener.html" class="sidebar-link" title= SyncReference.CompletionListener><span class="sidebar-link-text">SyncReference.CompletionListener</span></a></li><li class='sublist-item'><a href="/sync/Java/api/ChildEventListener.html" class="sidebar-link" title= ChildEventListener><span class="sidebar-link-text">ChildEventListener</span></a></li><li class='sublist-item'><a href="/sync/Java/api/ValueEventListener.html" class="sidebar-link" title= ValueEventListener><span class="sidebar-link-text">ValueEventListener</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Config.html" class="sidebar-link" title= Config><span class="sidebar-link-text">Config</span></a></li><li class='sublist-item'><a href="/sync/Java/api/DataSnapshot.html" class="sidebar-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/Java/api/MutableData.html" class="sidebar-link" title= MutableData><span class="sidebar-link-text">MutableData</span></a></li><li class='sublist-item'><a href="/sync/Java/api/OnDisconnect.html" class="sidebar-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Query.html" class="sidebar-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Transaction.html" class="sidebar-link" title= Transaction><span class="sidebar-link-text">Transaction</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Transaction.Handler.html" class="sidebar-link" title= Transaction.Handler><span class="sidebar-link-text">Transaction.Handler</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Transaction.Result.html" class="sidebar-link" title= Transaction.Result><span class="sidebar-link-text">Transaction.Result</span></a></li><li class='sublist-item'><a href="/sync/Java/api/ServerValue.html" class="sidebar-link" title= ServerValue><span class="sidebar-link-text">ServerValue</span></a></li><li class='sublist-item'><a href="/sync/Java/api/SyncError.html" class="sidebar-link" title= SyncError><span class="sidebar-link-text">SyncError</span></a></li><li class='sublist-item'><a href="/sync/Java/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Java/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">C</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/C/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/C/guide/config-and-porting.html" class="sidebar-link" title= 配置和移植><span class="sidebar-link-text">配置和移植</span></a></li><li class='sublist-item'><a href="/sync/C/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/C/guide/retrieve-data.html" class="sidebar-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/C/guide/offline-capabilities.html" class="sidebar-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/C/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/C/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/C/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/C/guide/bestpractice/offline.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/C/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/C/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/C/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/C/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/C/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/C/rules/ruleapi.html" class="sidebar-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/api/reference.html" class="sidebar-link" title= 操作实例><span class="sidebar-link-text">操作实例</span></a></li><li class='sublist-item'><a href="/sync/C/api/sync-with-server.html" class="sidebar-link" title= 数据修改和同步><span class="sidebar-link-text">数据修改和同步</span></a></li><li class='sublist-item'><a href="/sync/C/api/disconnect-sync.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li><li class='sublist-item'><a href="/sync/C/api/local-node.html" class="sidebar-link" title= 节点操作><span class="sidebar-link-text">节点操作</span></a></li><li class='sublist-item'><a href="/sync/C/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/resources/resources.html" class="sidebar-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/C/resources/tutorial.html" class="sidebar-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/C/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item sidebar-nav-item-show'><strong class="sidebar-title current select">REST</strong><ul class='sublist current'><li class='sublist-item'><a href="/sync/REST/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/REST/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/REST/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/retrieve-data.html" class="sidebar-link" title= 数据查询><span class="sidebar-link-text">数据查询</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/library.html" class="sidebar-link" title= 其他平台><span class="sidebar-link-text">其他平台</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/REST/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/REST/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/REST/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title select">安全性与规则</strong><ul class='sublist current'><li class='sublist-item'><a href="/sync/REST/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/ruleapi.html" class="sidebar-link current" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/REST/api/introduce.html" class="sidebar-link" title= 简介><span class="sidebar-link-text">简介</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Query.html" class="sidebar-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Auth.html" class="sidebar-link" title= Auth><span class="sidebar-link-text">Auth</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Streaming.html" class="sidebar-link" title= Streaming><span class="sidebar-link-text">Streaming</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Priorities.html" class="sidebar-link" title= Priorities><span class="sidebar-link-text">Priorities</span></a></li><li class='sublist-item'><a href="/sync/REST/api/ServerValues.html" class="sidebar-link" title= Server Values><span class="sidebar-link-text">Server Values</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Rule.html" class="sidebar-link" title= Rule><span class="sidebar-link-text">Rule</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Error.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/REST/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">微信小程序</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/微信小程序/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/guide/concept.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/save-data.html" class="sidebar-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/retrieve-data.html" class="sidebar-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/offline-capabilities.html" class="sidebar-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/advance-feature.html" class="sidebar-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/webhook.html" class="sidebar-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="sidebar-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/微信小程序/guide/bestpractice/structure-data.html" class="sidebar-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/微信小程序/guide/bestpractice/array.html" class="sidebar-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/微信小程序/guide/bestpractice/offline.html" class="sidebar-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/微信小程序/guide/datalimit.html" class="sidebar-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/rules/introduce.html" class="sidebar-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/access.html" class="sidebar-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/auth.html" class="sidebar-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/validate.html" class="sidebar-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/index.html" class="sidebar-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/ruleapi.html" class="sidebar-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/api/App.html" class="sidebar-link" title= App><span class="sidebar-link-text">App</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Sync.html" class="sidebar-link" title= Sync><span class="sidebar-link-text">Sync</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Reference.html" class="sidebar-link" title= Reference><span class="sidebar-link-text">Reference</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Query.html" class="sidebar-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/OnDisconnect.html" class="sidebar-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/DataSnapshot.html" class="sidebar-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Promise.html" class="sidebar-link" title= Promise><span class="sidebar-link-text">Promise</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Void.html" class="sidebar-link" title= Void><span class="sidebar-link-text">Void</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Web/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li></ul>
+    </div>
+</aside>
+
+    </div>
+    <div class="back-top-content">
+      <div class="back-top"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/public.js"></script>
+
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/search.js"></script>
+<!-- endbuild -->
+
+<!-- Google Tag Manager -->
+<script>
+window.addEventListener('load', function() {
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.wilddog.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-53PGC2');
+})
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Algolia -->
+<script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog-sync.js" ></script>
+
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+  <!--   <div id="footer-copyright">
+    &copy; 2018 <a href="https://www.wilddog.com/" target="_blank">野狗</a><br>
+  </div> -->
+    <div id="footer-links">
+		<a href="/overview/index.html" class="footer-link">文档</a>
+		<a href="https://www.wilddog.com/download" class="footer-link">SDK下载</a>
+		<a href="https://www.wilddog.com/product/pricing" class="footer-link">价格</a>
+		<a href="https://life.wilddog.com/wilddog-contact.html" class="footer-link">联系我们</a>
+		<a href="https://wilddog.kf5.com/user/login/?_ga=1.257821899.1360428381.1464868258" class="footer-link">客服工单</a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="mobile-nav-item">
+        <a href="https://github.com/" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <ul class='sidebar-nav'><li class='sidebar-nav-item'><strong class="mobile-nav-title">Web</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/Web/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/retrieve-data.html" class="mobile-nav-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/offline-capabilities.html" class="mobile-nav-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/advance-feature.html" class="mobile-nav-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/Web/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/Web/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/Web/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/Web/guide/bestpractice/offline.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Web/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/Web/rules/ruleapi.html" class="mobile-nav-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/api/App.html" class="mobile-nav-link" title= App><span class="sidebar-link-text">App</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Sync.html" class="mobile-nav-link" title= Sync><span class="sidebar-link-text">Sync</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Reference.html" class="mobile-nav-link" title= Reference><span class="sidebar-link-text">Reference</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Query.html" class="mobile-nav-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/Web/api/OnDisconnect.html" class="mobile-nav-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/Web/api/DataSnapshot.html" class="mobile-nav-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Promise.html" class="mobile-nav-link" title= Promise><span class="sidebar-link-text">Promise</span></a></li><li class='sublist-item'><a href="/sync/Web/api/Void.html" class="mobile-nav-link" title= Void><span class="sidebar-link-text">Void</span></a></li><li class='sublist-item'><a href="/sync/Web/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Web/resources/resources.html" class="mobile-nav-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/Web/resources/tutorial.html" class="mobile-nav-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Web/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">iOS</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/iOS/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/retrieve-data.html" class="mobile-nav-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/offline-capabilities.html" class="mobile-nav-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/advance-feature.html" class="mobile-nav-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/iOS/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/iOS/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/iOS/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/iOS/guide/bestpractice/offline.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/iOS/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/iOS/rules/ruleapi.html" class="mobile-nav-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/api/WDGOptions.html" class="mobile-nav-link" title= WDGOptions><span class="sidebar-link-text">WDGOptions</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGApp.html" class="mobile-nav-link" title= WDGApp><span class="sidebar-link-text">WDGApp</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGSync.html" class="mobile-nav-link" title= WDGSync><span class="sidebar-link-text">WDGSync</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGSyncReference.html" class="mobile-nav-link" title= WDGSyncReference><span class="sidebar-link-text">WDGSyncReference</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGSyncQuery.html" class="mobile-nav-link" title= WDGSyncQuery><span class="sidebar-link-text">WDGSyncQuery</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGDataSnapshot.html" class="mobile-nav-link" title= WDGDataSnapshot><span class="sidebar-link-text">WDGDataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGMutableData.html" class="mobile-nav-link" title= WDGMutableData><span class="sidebar-link-text">WDGMutableData</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGTransactionResult.html" class="mobile-nav-link" title= WDGTransactionResult><span class="sidebar-link-text">WDGTransactionResult</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGServerValue.html" class="mobile-nav-link" title= WDGServerValue><span class="sidebar-link-text">WDGServerValue</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/WDGDataEventType.html" class="mobile-nav-link" title= WDGDataEventType><span class="sidebar-link-text">WDGDataEventType</span></a></li><li class='sublist-item'><a href="/sync/iOS/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/iOS/resources/resources.html" class="mobile-nav-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/iOS/resources/tutorial.html" class="mobile-nav-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/iOS/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">Android</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/Android/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/retrieve-data.html" class="mobile-nav-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/offline-capabilities.html" class="mobile-nav-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/advance-feature.html" class="mobile-nav-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/Android/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/Android/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/Android/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/Android/guide/bestpractice/offline.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Android/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/Android/rules/ruleapi.html" class="mobile-nav-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/api/WilddogOptions.html" class="mobile-nav-link" title= WilddogOptions><span class="sidebar-link-text">WilddogOptions</span></a></li><li class='sublist-item'><a href="/sync/Android/api/WilddogOptions.Builder.html" class="mobile-nav-link" title= WilddogOptions.Builder><span class="sidebar-link-text">WilddogOptions.Builder</span></a></li><li class='sublist-item'><a href="/sync/Android/api/WilddogApp.html" class="mobile-nav-link" title= WilddogApp><span class="sidebar-link-text">WilddogApp</span></a></li><li class='sublist-item'><a href="/sync/Android/api/WilddogSync.html" class="mobile-nav-link" title= WilddogSync><span class="sidebar-link-text">WilddogSync</span></a></li><li class='sublist-item'><a href="/sync/Android/api/SyncReference.html" class="mobile-nav-link" title= SyncReference><span class="sidebar-link-text">SyncReference</span></a></li><li class='sublist-item'><a href="/sync/Android/api/SyncReference.CompletionListener.html" class="mobile-nav-link" title= SyncReference.CompletionListener><span class="sidebar-link-text">SyncReference.CompletionListener</span></a></li><li class='sublist-item'><a href="/sync/Android/api/ChildEventListener.html" class="mobile-nav-link" title= ChildEventListener><span class="sidebar-link-text">ChildEventListener</span></a></li><li class='sublist-item'><a href="/sync/Android/api/ValueEventListener.html" class="mobile-nav-link" title= ValueEventListener><span class="sidebar-link-text">ValueEventListener</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Config.html" class="mobile-nav-link" title= Config><span class="sidebar-link-text">Config</span></a></li><li class='sublist-item'><a href="/sync/Android/api/DataSnapshot.html" class="mobile-nav-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/Android/api/MutableData.html" class="mobile-nav-link" title= MutableData><span class="sidebar-link-text">MutableData</span></a></li><li class='sublist-item'><a href="/sync/Android/api/OnDisconnect.html" class="mobile-nav-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Query.html" class="mobile-nav-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Transaction.html" class="mobile-nav-link" title= Transaction><span class="sidebar-link-text">Transaction</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Transaction.Handler.html" class="mobile-nav-link" title= Transaction.Handler><span class="sidebar-link-text">Transaction.Handler</span></a></li><li class='sublist-item'><a href="/sync/Android/api/Transaction.Result.html" class="mobile-nav-link" title= Transaction.Result><span class="sidebar-link-text">Transaction.Result</span></a></li><li class='sublist-item'><a href="/sync/Android/api/ServerValue.html" class="mobile-nav-link" title= ServerValue><span class="sidebar-link-text">ServerValue</span></a></li><li class='sublist-item'><a href="/sync/Android/api/SyncError.html" class="mobile-nav-link" title= SyncError><span class="sidebar-link-text">SyncError</span></a></li><li class='sublist-item'><a href="/sync/Android/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Android/resources/resources.html" class="mobile-nav-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/Android/resources/tutorial.html" class="mobile-nav-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Android/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">Java</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/Java/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/retrieve-data.html" class="mobile-nav-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/custom.html" class="mobile-nav-link" title= 自定义身份认证><span class="sidebar-link-text">自定义身份认证</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/offline-capabilities.html" class="mobile-nav-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/advance-feature.html" class="mobile-nav-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/Java/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/Java/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/Java/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/Java/guide/bestpractice/offline.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Java/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/Java/rules/ruleapi.html" class="mobile-nav-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/Java/api/AuthResult.html" class="mobile-nav-link" title= AuthResult><span class="sidebar-link-text">AuthResult</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogOptions.html" class="mobile-nav-link" title= WilddogOptions><span class="sidebar-link-text">WilddogOptions</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogOptions.Builder.html" class="mobile-nav-link" title= WilddogOptions.Builder><span class="sidebar-link-text">WilddogOptions.Builder</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogApp.html" class="mobile-nav-link" title= WilddogApp><span class="sidebar-link-text">WilddogApp</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogAuth.html" class="mobile-nav-link" title= WilddogAuth><span class="sidebar-link-text">WilddogAuth</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogSync.html" class="mobile-nav-link" title= WilddogSync><span class="sidebar-link-text">WilddogSync</span></a></li><li class='sublist-item'><a href="/sync/Java/api/WilddogUser.html" class="mobile-nav-link" title= WilddogUser><span class="sidebar-link-text">WilddogUser</span></a></li><li class='sublist-item'><a href="/sync/Java/api/SyncReference.html" class="mobile-nav-link" title= SyncReference><span class="sidebar-link-text">SyncReference</span></a></li><li class='sublist-item'><a href="/sync/Java/api/SyncReference.CompletionListener.html" class="mobile-nav-link" title= SyncReference.CompletionListener><span class="sidebar-link-text">SyncReference.CompletionListener</span></a></li><li class='sublist-item'><a href="/sync/Java/api/ChildEventListener.html" class="mobile-nav-link" title= ChildEventListener><span class="sidebar-link-text">ChildEventListener</span></a></li><li class='sublist-item'><a href="/sync/Java/api/ValueEventListener.html" class="mobile-nav-link" title= ValueEventListener><span class="sidebar-link-text">ValueEventListener</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Config.html" class="mobile-nav-link" title= Config><span class="sidebar-link-text">Config</span></a></li><li class='sublist-item'><a href="/sync/Java/api/DataSnapshot.html" class="mobile-nav-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/Java/api/MutableData.html" class="mobile-nav-link" title= MutableData><span class="sidebar-link-text">MutableData</span></a></li><li class='sublist-item'><a href="/sync/Java/api/OnDisconnect.html" class="mobile-nav-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Query.html" class="mobile-nav-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Transaction.html" class="mobile-nav-link" title= Transaction><span class="sidebar-link-text">Transaction</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Transaction.Handler.html" class="mobile-nav-link" title= Transaction.Handler><span class="sidebar-link-text">Transaction.Handler</span></a></li><li class='sublist-item'><a href="/sync/Java/api/Transaction.Result.html" class="mobile-nav-link" title= Transaction.Result><span class="sidebar-link-text">Transaction.Result</span></a></li><li class='sublist-item'><a href="/sync/Java/api/ServerValue.html" class="mobile-nav-link" title= ServerValue><span class="sidebar-link-text">ServerValue</span></a></li><li class='sublist-item'><a href="/sync/Java/api/SyncError.html" class="mobile-nav-link" title= SyncError><span class="sidebar-link-text">SyncError</span></a></li><li class='sublist-item'><a href="/sync/Java/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Java/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">C</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/C/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/C/guide/config-and-porting.html" class="mobile-nav-link" title= 配置和移植><span class="sidebar-link-text">配置和移植</span></a></li><li class='sublist-item'><a href="/sync/C/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/C/guide/retrieve-data.html" class="mobile-nav-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/C/guide/offline-capabilities.html" class="mobile-nav-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/C/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/C/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/C/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/C/guide/bestpractice/offline.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/C/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/C/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/C/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/C/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/C/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/C/rules/ruleapi.html" class="mobile-nav-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/api/reference.html" class="mobile-nav-link" title= 操作实例><span class="sidebar-link-text">操作实例</span></a></li><li class='sublist-item'><a href="/sync/C/api/sync-with-server.html" class="mobile-nav-link" title= 数据修改和同步><span class="sidebar-link-text">数据修改和同步</span></a></li><li class='sublist-item'><a href="/sync/C/api/disconnect-sync.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li><li class='sublist-item'><a href="/sync/C/api/local-node.html" class="mobile-nav-link" title= 节点操作><span class="sidebar-link-text">节点操作</span></a></li><li class='sublist-item'><a href="/sync/C/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">示例代码</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/C/resources/resources.html" class="mobile-nav-link" title= 示例库><span class="sidebar-link-text">示例库</span></a></li><li class='sublist-item'><a href="/sync/C/resources/tutorial.html" class="mobile-nav-link" title= 实战教程><span class="sidebar-link-text">实战教程</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/C/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item sidebar-nav-item-show'><strong class="mobile-nav-title current select">REST</strong><ul class='sublist current'><li class='sublist-item'><a href="/sync/REST/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/REST/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/REST/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/retrieve-data.html" class="mobile-nav-link" title= 数据查询><span class="sidebar-link-text">数据查询</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/library.html" class="mobile-nav-link" title= 其他平台><span class="sidebar-link-text">其他平台</span></a></li><li class='sublist-item'><a href="/sync/REST/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/REST/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/REST/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/REST/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title select">安全性与规则</strong><ul class='sublist current'><li class='sublist-item'><a href="/sync/REST/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/REST/rules/ruleapi.html" class="mobile-nav-link current" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/REST/api/introduce.html" class="mobile-nav-link" title= 简介><span class="sidebar-link-text">简介</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Query.html" class="mobile-nav-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Auth.html" class="mobile-nav-link" title= Auth><span class="sidebar-link-text">Auth</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Streaming.html" class="mobile-nav-link" title= Streaming><span class="sidebar-link-text">Streaming</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Priorities.html" class="mobile-nav-link" title= Priorities><span class="sidebar-link-text">Priorities</span></a></li><li class='sublist-item'><a href="/sync/REST/api/ServerValues.html" class="mobile-nav-link" title= Server Values><span class="sidebar-link-text">Server Values</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Rule.html" class="mobile-nav-link" title= Rule><span class="sidebar-link-text">Rule</span></a></li><li class='sublist-item'><a href="/sync/REST/api/Error.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/REST/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">微信小程序</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/sync/微信小程序/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/guide/concept.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/save-data.html" class="mobile-nav-link" title= 数据操作><span class="sidebar-link-text">数据操作</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/retrieve-data.html" class="mobile-nav-link" title= 事件监听><span class="sidebar-link-text">事件监听</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/offline-capabilities.html" class="mobile-nav-link" title= 离线功能><span class="sidebar-link-text">离线功能</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/advance-feature.html" class="mobile-nav-link" title= 高级特性><span class="sidebar-link-text">高级特性</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/guide/webhook.html" class="mobile-nav-link" title= Webhook><span class="sidebar-link-text">Webhook</span></a></li><li class='sublist-item'><strong class="mobile-nav-title">最佳实践</strong><ul class='subsublist'><li class='subsublist-item'><a href="/sync/微信小程序/guide/bestpractice/structure-data.html" class="mobile-nav-link" title= 组织数据><span class="sidebar-link-text">组织数据</span></a></li><li class='subsublist-item'><a href="/sync/微信小程序/guide/bestpractice/array.html" class="mobile-nav-link" title= 数组处理><span class="sidebar-link-text">数组处理</span></a></li><li class='subsublist-item'><a href="/sync/微信小程序/guide/bestpractice/offline.html" class="mobile-nav-link" title= 离线事件><span class="sidebar-link-text">离线事件</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/微信小程序/guide/datalimit.html" class="mobile-nav-link" title= 数据限制><span class="sidebar-link-text">数据限制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">安全性与规则</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/rules/introduce.html" class="mobile-nav-link" title= 规则表达式简介><span class="sidebar-link-text">规则表达式简介</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/access.html" class="mobile-nav-link" title= 读写权限控制><span class="sidebar-link-text">读写权限控制</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/auth.html" class="mobile-nav-link" title= 用户访问控制><span class="sidebar-link-text">用户访问控制</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/validate.html" class="mobile-nav-link" title= 数据校验><span class="sidebar-link-text">数据校验</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/index.html" class="mobile-nav-link" title= 数据索引><span class="sidebar-link-text">数据索引</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/rules/ruleapi.html" class="mobile-nav-link" title= API 参考><span class="sidebar-link-text">API 参考</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/sync/微信小程序/api/App.html" class="mobile-nav-link" title= App><span class="sidebar-link-text">App</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Sync.html" class="mobile-nav-link" title= Sync><span class="sidebar-link-text">Sync</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Reference.html" class="mobile-nav-link" title= Reference><span class="sidebar-link-text">Reference</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Query.html" class="mobile-nav-link" title= Query><span class="sidebar-link-text">Query</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/OnDisconnect.html" class="mobile-nav-link" title= OnDisconnect><span class="sidebar-link-text">OnDisconnect</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/DataSnapshot.html" class="mobile-nav-link" title= DataSnapshot><span class="sidebar-link-text">DataSnapshot</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Promise.html" class="mobile-nav-link" title= Promise><span class="sidebar-link-text">Promise</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/Void.html" class="mobile-nav-link" title= Void><span class="sidebar-link-text">Void</span></a></li><li class='sublist-item'><a href="/sync/微信小程序/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/sync/Web/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li></ul>
+    
+  </div>
+
+</nav>
+</body>
+</html>

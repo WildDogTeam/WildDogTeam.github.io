@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>基础概念 | 开发文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="telephone=no,email=no" name="format-detection">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/conference/Android/guide/0-concepts.html">
+  <!-- Alternative links -->
+  
+    
+  
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="/images/favicon.png" sizes="24x24">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="开发文档">
+  <!-- Open Graph -->
+  <meta name="description" content="Room多人视频通话的房间，包含了发布在房间中的所有媒体流，创建或加入房间后，可以发布／接收媒体流。 Local Stream本地媒体流，包括本地音频流和视频流，需要在发起视频通话／接受视频通话邀请前进行配置。 Room Stream多人视频通话房间中的远端媒体流。 Video View使用 VideoView 播放本地／远端视频流，LocalStream 和 RoomStream 只能与 Vid">
+<meta property="og:type" content="website">
+<meta property="og:title" content="基础概念">
+<meta property="og:url" content="http://yoursite.com/conference/Android/guide/0-concepts.html">
+<meta property="og:site_name" content="开发文档">
+<meta property="og:description" content="Room多人视频通话的房间，包含了发布在房间中的所有媒体流，创建或加入房间后，可以发布／接收媒体流。 Local Stream本地媒体流，包括本地音频流和视频流，需要在发起视频通话／接受视频通话邀请前进行配置。 Room Stream多人视频通话房间中的远端媒体流。 Video View使用 VideoView 播放本地／远端视频流，LocalStream 和 RoomStream 只能与 Vid">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-06-21T12:46:00.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础概念">
+<meta name="twitter:description" content="Room多人视频通话的房间，包含了发布在房间中的所有媒体流，创建或加入房间后，可以发布／接收媒体流。 Local Stream本地媒体流，包括本地音频流和视频流，需要在发起视频通话／接受视频通话邀请前进行配置。 Room Stream多人视频通话房间中的远端媒体流。 Video View使用 VideoView 播放本地／远端视频流，LocalStream 和 RoomStream 只能与 Vid">
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="https://www.wilddog.com" id="logo"></a>
+    </h1>
+    <div class="menu-ctrl" style="display: none;">
+      <span class="menu-ctrl-line menu-ctrl-line-t"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-m"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-b"></span>
+    </div>
+    <nav id="main-nav">
+      <a href="/overview/index.html" class="main-nav-link">概览</a>
+      <a href="/sync/Web/index.html" class="main-nav-link">实时通信引擎</a>
+      <a href="/sms/index.html" class="main-nav-link">智能短信</a>
+      <a href="/auth/Web/index.html" class="main-nav-link">身份认证</a>
+      
+      
+      
+      
+    </nav>
+    <div class="searchbar">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+        <span class="serach-placeholder">搜索</span>
+      </div>
+    </div>
+    <div class="searchbar-inputting">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+      </div>
+      <form accept-charset="utf-8" action="/result/index.html">
+        <input type="search" class="search-input" placeholder="搜索" name="keyword">
+      </form>
+      <span class="close-search"><img src="/images/close.svg" alt=""></span>
+    </div>
+    <div class="header-info pull-right">
+        <span class="pull-left"><img src="" alt="" class="img-circle profile-avatar" width="24" height="24"></span>
+        <span class="user-email"></span>
+        <span class="arr-down icon-48"></span>
+        <ul class="drop-menu clearfix">
+            <li class="drop-menu-item header-item-profile col-sm-6 text-center">
+                <a href="https://www.wilddog.com/info/info" class="header-item-link">
+                    <span class="header-item-icon icon-profile">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m281 366c-2 0-4-1-6-2-2-2-2-5-2-7l15-75c0-2 1-3 2-4l129-129c19-19 52-19 71 0 10 9 15 22 15 36 0 13-5 26-15 35l-128 129c-2 1-3 2-4 2l-76 15c0 0-1 0-1 0z m22-79l-12 61 61-12 127-127c7-6 10-15 10-24 0-10-3-19-10-25-13-13-36-13-49 0z m7 73c-3 0-6-2-7-5-1-4-4-8-8-11-3-4-7-6-11-8-4-2-6-6-4-10 1-4 6-6 10-5 6 3 12 7 17 12 4 4 8 10 11 17 1 4-1 8-5 10-1 0-2 0-3 0z m47-9c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 10 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m126-126c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 9 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m-234-118l-109 0c-5 0-8-3-8-7 0-5 3-8 8-8l109 0c4 0 8 3 8 8 0 4-4 7-8 7z m-55 184c-58 0-106-46-106-103l0-85c0-57 48-103 106-103 59 0 107 46 107 103l0 85c0 57-48 103-107 103z m0-275c-50 0-91 39-91 87l0 85c0 48 41 88 91 88 50 0 91-40 91-88l0-85c0-48-41-87-91-87z m187 489l-373 0c-5 0-8-3-8-7l0-117c0-70 59-127 131-127 5 0 8 3 8 8 0 4-3 7-8 7-64 0-115 50-115 112l0 109 357 0 0-109c0-5 4-8 8-8 4 0 8 3 8 8l0 117c0 4-4 7-8 7z"></path></svg>
+                    </span>
+                    <span class="header-item-title">个人中心</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-confirm col-sm-6 text-center">
+                <a href="https://www.wilddog.com/pay/trade-entry" class="header-item-link">
+                    <span class="header-item-icon icon-confirm">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m15 188l-15 0 0-114c0-23 19-42 42-42l257 0c23 0 42 19 42 42l0 66-15 0 0-66c0-15-12-27-27-27l-257 0c-15 0-27 12-27 27z m455 286l-428 0c-23 0-42-19-42-43l0-257c0-23 19-42 42-42l428 0c23 0 42 19 42 42l0 257c0 24-19 43-42 43z m-428-327c-15 0-27 12-27 27l0 257c0 15 12 28 27 28l428 0c15 0 27-13 27-28l0-257c0-15-12-27-27-27l-428 0z m378 195c-22 0-39-18-39-39 0-22 17-39 39-39 21 0 39 17 39 39 0 21-18 39-39 39z m0-63c-14 0-24 11-24 24 0 13 10 24 24 24 13 0 24-11 24-24 0-13-11-24-24-24z"></path></svg>
+                    </span>
+                    <span class="header-item-title">财务</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-doc col-sm-6 text-center">
+                <a href="https://docs.wilddog.com/overview/index.html" class="header-item-link">
+                    <span class="header-item-icon icon-icon-v-05">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m100 232l305 0 0 17-305 0z m0 82l305 0 0 17-305 0z m0 83l305 0 0 17-305 0z m152-380c22 0 42 13 50 33 3 6 9 10 16 10l18 0 0 59-167 0 0-59 18 0c6 0 13-4 15-10 9-20 29-33 50-33m0-17c-29 0-54 18-65 43l-35 0 0 93 201 0 0-93-35 0c-11-25-36-43-66-43z m174 503l-348 0c-43 0-78-35-78-78l0-276c0-44 35-79 78-79l48 0 0 17-48 0c-34 0-61 28-61 62l0 276c0 34 27 61 61 61l348 0c34 0 62-27 62-61l0-276c0-34-28-62-62-62l-47 0 0-17 47 0c44 0 79 35 79 79l0 276c0 43-35 78-79 78z"></path></svg>
+                    </span>
+                    <span class="header-item-title">文档</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-service col-sm-6 text-center">
+                <a href="https://www.wilddog.com/wwwapi/account/kf5" class="header-item-link">
+                    <span class="header-item-icon icon-service">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m256 16c132 0 240 108 240 240 0 132-108 240-240 240-132 0-240-108-240-240 0-132 108-240 240-240m0-16c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m0 355c-4 0-8-4-8-8l0-24c0-35 10-54 44-78 24-15 36-35 36-59 0-36-32-64-72-64-40 0-72 29-72 64 0 5-3 8-8 8-4 0-8-3-8-8 0-44 39-80 88-80 49 0 88 35 88 80 0 30-14 54-43 72-29 22-37 35-37 65l0 24c0 4-4 8-8 8z m0 79c-4 0-8-3-8-8l0-37c0-4 4-8 8-8 4 0 8 4 8 8l0 37c0 5-4 8-8 8z"></path></svg>
+                    </span>
+                    <span class="header-item-title">客服工单</span>
+                </a>
+            </li>
+            <li class="drop-menu-item logout col-sm-12 text-center">
+                <a href="" class="header-item-link logout-btn">退出登录</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="header-user pull-right">
+        <li class="pull-left login-tab"><a href="" class="login">登录</a></li>
+        <li class="pull-right register-tab"><a href="" class="btn btn-org-empty register">免费注册</a></li>
+    </ul>
+  </div>
+</header>
+<div class="mask fadeHide"></div>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">
+                  基础概念
+                  <span class="edit-doc-source">
+                    <a href="https://github.com/WildDogTeam/wilddog-doc2/blob/master/source/conference/Android/guide/0-concepts.md" class="edit-doc-link" title="改进本文">
+                    <svg version="1.1" width="16px" height="16px" viewBox="200.38 -94.272 16 16">
+                      <path fill="#999999" class="github" d="M208.38-94.272c-4.42,0-8,3.671-8,8.202c0,3.63,2.29,6.695,5.47,7.782c0.4,0.072,0.55-0.174,0.55-0.39
+                      c0-0.195-0.01-0.841-0.01-1.528c-2.01,0.379-2.53-0.502-2.69-0.964c-0.09-0.236-0.48-0.964-0.82-1.159
+                      c-0.28-0.154-0.68-0.533-0.01-0.543c0.63-0.01,1.08,0.595,1.23,0.841c0.72,1.241,1.87,0.892,2.33,0.677
+                      c0.07-0.533,0.28-0.892,0.51-1.097c-1.78-0.205-3.64-0.913-3.64-4.05c0-0.892,0.31-1.63,0.82-2.204
+                      c-0.08-0.205-0.36-1.046,0.08-2.174c0,0,0.67-0.215,2.2,0.841c0.64-0.185,1.32-0.277,2-0.277s1.36,0.092,2,0.277
+                      c1.53-1.066,2.2-0.841,2.2-0.841c0.44,1.128,0.16,1.969,0.08,2.174c0.51,0.574,0.82,1.302,0.82,2.204c0,3.148-1.87,3.845-3.65,4.05
+                      c0.29,0.256,0.54,0.748,0.54,1.517c0,1.097-0.01,1.979-0.01,2.256c0,0.215,0.15,0.472,0.55,0.39c3.256-1.127,5.449-4.258,5.45-7.782
+                      C216.38-90.601,212.8-94.272,208.38-94.272z"/>
+                    </svg><span class="article-edit-link">编辑文档</span></a>
+                  </span>
+                </h1>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="Room" class="top-heading article-heading"><a href="#Room" class="headerlink" title="Room"></a>Room</h2><p>多人视频通话的房间，包含了发布在房间中的所有媒体流，创建或加入房间后，可以发布／接收媒体流。</p>
+<h2 id="Local-Stream" class="article-heading"><a href="#Local-Stream" class="headerlink" title="Local Stream"></a>Local Stream</h2><p>本地媒体流，包括本地音频流和视频流，需要在发起视频通话／接受视频通话邀请前进行配置。</p>
+<h2 id="Room-Stream" class="article-heading"><a href="#Room-Stream" class="headerlink" title="Room Stream"></a>Room Stream</h2><p>多人视频通话房间中的远端媒体流。</p>
+<h2 id="Video-View" class="article-heading"><a href="#Video-View" class="headerlink" title="Video View"></a>Video View</h2><p>使用 VideoView 播放本地／远端视频流，LocalStream 和 RoomStream 只能与 VideoView 绑定来播放。</p>
+<h2 id="Publish-amp-Subscribe" class="article-heading"><a href="#Publish-amp-Subscribe" class="headerlink" title="Publish &amp; Subscribe"></a>Publish &amp; Subscribe</h2><p>多人视频通话采用了发布／订阅机制，客户端将自己的媒体流发布到多人视频通话的房间中，并从房间中获取远端媒体流的列表，然后选择订阅远端媒体流。</p>
+
+                <time class="article-footer-updated" datetime="2018-06-21T12:46:00.140Z" itemprop="dateModified">上次更新：2018-06-21</time>
+              </div>
+              <div class="toc-content">
+                <aside id="article-toc" role="navigation">
+                  <div class="toc-scroll-content">
+                    <div class="toc-inner">
+                      <span class="slide-dot"></span>
+                      <div id="article-toc-inner">
+                        <strong class="sidebar-title">目录</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Room"><span class="toc-text">Room</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Local-Stream"><span class="toc-text">Local Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Room-Stream"><span class="toc-text">Room Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Video-View"><span class="toc-text">Video View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publish-amp-Subscribe"><span class="toc-text">Publish &amp; Subscribe</span></a></li></ol>
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+                <div class="toc-link-title"></div>
+              </div>
+              <footer class="article-footer">
+                <a href="/conference/Android/quickstart.html" class="article-footer-prev" title="快速入门"><img src='/images/arr-left.svg' class='arr-icon'><div class='page-title'><div>上一节：</div>快速入门 </div></a><a href="/conference/Android/guide/1-installSDK.html" class="article-footer-next" title="安装和初始化"><div class='page-title'><div class='text-right'>下一节：</div>安装和初始化</div><img src='/images/arr-right.svg' class='arr-icon'></a>
+              </footer>
+              <div class="novice novice-register text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">野狗新手？</div>
+                <div class="register-text">立即注册，为你提供安全可靠的实时通信云服务。</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/my-account/signup?next=https://docs.wilddog.com" class="btn btn-org-full register-link">免费注册</a>
+                </div>
+              </div>
+              <div class="novice novice-help text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">没找到需要的文档？</div>
+                <div class="register-text">你可以提交工单反馈 或 阅读常见问题</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/wwwapi/account/kf5" target="_blank" class="btn btn-org-empty service-link">客服工单</a><a href="https://wilddog.kf5.com/hc" target="_blank" class="btn btn-gray question-link">常见问题</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+    <div class="outer">
+        <input type='hidden' value=Web,iOS,Android,REST><div class='selected'>Android</div><ul class='platforms'></ul>
+    </div>
+    <div class="inner">
+        <ul class='sidebar-nav'><li class='sidebar-nav-item'><strong class="sidebar-title">Web</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Web/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conference/Web/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Web/guide/0-concepts.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/1-installSDK.html" class="sidebar-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/2-mediaStream.html" class="sidebar-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/3-room.html" class="sidebar-link" title= 管理多人视频通话><span class="sidebar-link-text">管理多人视频通话</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/4-pubAndSub.html" class="sidebar-link" title= 发布和订阅><span class="sidebar-link-text">发布和订阅</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/5-recording.html" class="sidebar-link" title= 媒体流录制><span class="sidebar-link-text">媒体流录制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Web/api/wilddogVideoInitializer.html" class="sidebar-link" title= wilddogVideo><span class="sidebar-link-text">wilddogVideo</span></a></li><li class='sublist-item'><a href="/conference/Web/api/wilddogRoom.html" class="sidebar-link" title= WilddogVideoRoom><span class="sidebar-link-text">WilddogVideoRoom</span></a></li><li class='sublist-item'><a href="/conference/Web/api/localStream.html" class="sidebar-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conference/Web/api/roomStream.html" class="sidebar-link" title= RoomStream><span class="sidebar-link-text">RoomStream</span></a></li><li class='sublist-item'><a href="/conference/Web/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/Web/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">iOS</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/iOS/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conference/iOS/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/iOS/guide/0-concepts.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/1-installSDK.html" class="sidebar-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/2-mediaStream.html" class="sidebar-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/3-room.html" class="sidebar-link" title= 管理多人视频通话><span class="sidebar-link-text">管理多人视频通话</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/4-pubAndSub.html" class="sidebar-link" title= 发布和订阅><span class="sidebar-link-text">发布和订阅</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/5-recording.html" class="sidebar-link" title= 媒体流录制><span class="sidebar-link-text">媒体流录制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/iOS/api/WDGVideoInitializer.html" class="sidebar-link" title= VideoInitializer><span class="sidebar-link-text">VideoInitializer</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGRoom.html" class="sidebar-link" title= Room><span class="sidebar-link-text">Room</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGRoomDelegate.html" class="sidebar-link" title= RoomDelegate><span class="sidebar-link-text">RoomDelegate</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGStream.html" class="sidebar-link" title= Stream><span class="sidebar-link-text">Stream</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGLocalStream.html" class="sidebar-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGLocalStreamOptions.html" class="sidebar-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGLocalStreamDelegate.html" class="sidebar-link" title= LocalStreamDelegate><span class="sidebar-link-text">LocalStreamDelegate</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGRoomStream.html" class="sidebar-link" title= RoomStream><span class="sidebar-link-text">RoomStream</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGVideoView.html" class="sidebar-link" title= VideoView><span class="sidebar-link-text">VideoView</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/iOS/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item sidebar-nav-item-show'><strong class="sidebar-title current select">Android</strong><ul class='sublist current'><li class='sublist-item'><a href="/conference/Android/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conference/Android/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title select">完整指南</strong><ul class='sublist current'><li class='sublist-item'><a href="/conference/Android/guide/0-concepts.html" class="sidebar-link current" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/1-installSDK.html" class="sidebar-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/2-mediaStream.html" class="sidebar-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/3-room.html" class="sidebar-link" title= 管理多人视频通话><span class="sidebar-link-text">管理多人视频通话</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/4-pubAndSub.html" class="sidebar-link" title= 发布和订阅><span class="sidebar-link-text">发布和订阅</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/5-recording.html" class="sidebar-link" title= 媒体流录制><span class="sidebar-link-text">媒体流录制</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-initializer.html" class="sidebar-link" title= WilddogVideoInitializer><span class="sidebar-link-text">WilddogVideoInitializer</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-room.html" class="sidebar-link" title= WilddogRoom><span class="sidebar-link-text">WilddogRoom</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-room-listener.html" class="sidebar-link" title= WilddogRoom.Listener><span class="sidebar-link-text">WilddogRoom.Listener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/local-stream.html" class="sidebar-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conference/Android/api/local-stream-options.html" class="sidebar-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conference/Android/api/camera-frame-listener.html" class="sidebar-link" title= LocalStream.CameraFrameListener><span class="sidebar-link-text">LocalStream.CameraFrameListener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/capture-listener.html" class="sidebar-link" title= LocalStream.CaptureListener><span class="sidebar-link-text">LocalStream.CaptureListener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/scaling-type.html" class="sidebar-link" title= ScalingType><span class="sidebar-link-text">ScalingType</span></a></li><li class='sublist-item'><a href="/conference/Android/api/room-stream.html" class="sidebar-link" title= RoomStream><span class="sidebar-link-text">RoomStream</span></a></li><li class='sublist-item'><a href="/conference/Android/api/room-stream-listener.html" class="sidebar-link" title= RoomStream.Listener><span class="sidebar-link-text">RoomStream.Listener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-view.html" class="sidebar-link" title= WilddogVideoView><span class="sidebar-link-text">WilddogVideoView</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-view-layout.html" class="sidebar-link" title= WilddogVideoViewLayout><span class="sidebar-link-text">WilddogVideoViewLayout</span></a></li><li class='sublist-item'><a href="/conference/Android/api/complete-listener.html" class="sidebar-link" title= CompleteListener><span class="sidebar-link-text">CompleteListener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-error.html" class="sidebar-link" title= WilddogVideoError><span class="sidebar-link-text">WilddogVideoError</span></a></li><li class='sublist-item'><a href="/conference/Android/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/Android/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">REST</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/REST/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/REST/api/snapshot.html" class="sidebar-link" title= 云端截图><span class="sidebar-link-text">云端截图</span></a></li><li class='sublist-item'><a href="/conference/REST/api/externalInput.html" class="sidebar-link" title= 媒体插播><span class="sidebar-link-text">媒体插播</span></a></li><li class='sublist-item'><a href="/conference/REST/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/REST/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li></ul>
+    </div>
+</aside>
+
+    </div>
+    <div class="back-top-content">
+      <div class="back-top"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/public.js"></script>
+
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/search.js"></script>
+<!-- endbuild -->
+
+<!-- Google Tag Manager -->
+<script>
+window.addEventListener('load', function() {
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.wilddog.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-53PGC2');
+})
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Algolia -->
+<script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog-sync.js" ></script>
+
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+  <!--   <div id="footer-copyright">
+    &copy; 2018 <a href="https://www.wilddog.com/" target="_blank">野狗</a><br>
+  </div> -->
+    <div id="footer-links">
+		<a href="/overview/index.html" class="footer-link">文档</a>
+		<a href="https://www.wilddog.com/download" class="footer-link">SDK下载</a>
+		<a href="https://www.wilddog.com/product/pricing" class="footer-link">价格</a>
+		<a href="https://life.wilddog.com/wilddog-contact.html" class="footer-link">联系我们</a>
+		<a href="https://wilddog.kf5.com/user/login/?_ga=1.257821899.1360428381.1464868258" class="footer-link">客服工单</a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="mobile-nav-item">
+        <a href="https://github.com/" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <ul class='sidebar-nav'><li class='sidebar-nav-item'><strong class="mobile-nav-title">Web</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Web/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conference/Web/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Web/guide/0-concepts.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/1-installSDK.html" class="mobile-nav-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/2-mediaStream.html" class="mobile-nav-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/3-room.html" class="mobile-nav-link" title= 管理多人视频通话><span class="sidebar-link-text">管理多人视频通话</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/4-pubAndSub.html" class="mobile-nav-link" title= 发布和订阅><span class="sidebar-link-text">发布和订阅</span></a></li><li class='sublist-item'><a href="/conference/Web/guide/5-recording.html" class="mobile-nav-link" title= 媒体流录制><span class="sidebar-link-text">媒体流录制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Web/api/wilddogVideoInitializer.html" class="mobile-nav-link" title= wilddogVideo><span class="sidebar-link-text">wilddogVideo</span></a></li><li class='sublist-item'><a href="/conference/Web/api/wilddogRoom.html" class="mobile-nav-link" title= WilddogVideoRoom><span class="sidebar-link-text">WilddogVideoRoom</span></a></li><li class='sublist-item'><a href="/conference/Web/api/localStream.html" class="mobile-nav-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conference/Web/api/roomStream.html" class="mobile-nav-link" title= RoomStream><span class="sidebar-link-text">RoomStream</span></a></li><li class='sublist-item'><a href="/conference/Web/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/Web/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">iOS</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/iOS/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conference/iOS/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/iOS/guide/0-concepts.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/1-installSDK.html" class="mobile-nav-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/2-mediaStream.html" class="mobile-nav-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/3-room.html" class="mobile-nav-link" title= 管理多人视频通话><span class="sidebar-link-text">管理多人视频通话</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/4-pubAndSub.html" class="mobile-nav-link" title= 发布和订阅><span class="sidebar-link-text">发布和订阅</span></a></li><li class='sublist-item'><a href="/conference/iOS/guide/5-recording.html" class="mobile-nav-link" title= 媒体流录制><span class="sidebar-link-text">媒体流录制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/iOS/api/WDGVideoInitializer.html" class="mobile-nav-link" title= VideoInitializer><span class="sidebar-link-text">VideoInitializer</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGRoom.html" class="mobile-nav-link" title= Room><span class="sidebar-link-text">Room</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGRoomDelegate.html" class="mobile-nav-link" title= RoomDelegate><span class="sidebar-link-text">RoomDelegate</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGStream.html" class="mobile-nav-link" title= Stream><span class="sidebar-link-text">Stream</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGLocalStream.html" class="mobile-nav-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGLocalStreamOptions.html" class="mobile-nav-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGLocalStreamDelegate.html" class="mobile-nav-link" title= LocalStreamDelegate><span class="sidebar-link-text">LocalStreamDelegate</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGRoomStream.html" class="mobile-nav-link" title= RoomStream><span class="sidebar-link-text">RoomStream</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/WDGVideoView.html" class="mobile-nav-link" title= VideoView><span class="sidebar-link-text">VideoView</span></a></li><li class='sublist-item'><a href="/conference/iOS/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/iOS/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item sidebar-nav-item-show'><strong class="mobile-nav-title current select">Android</strong><ul class='sublist current'><li class='sublist-item'><a href="/conference/Android/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conference/Android/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title select">完整指南</strong><ul class='sublist current'><li class='sublist-item'><a href="/conference/Android/guide/0-concepts.html" class="mobile-nav-link current" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/1-installSDK.html" class="mobile-nav-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/2-mediaStream.html" class="mobile-nav-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/3-room.html" class="mobile-nav-link" title= 管理多人视频通话><span class="sidebar-link-text">管理多人视频通话</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/4-pubAndSub.html" class="mobile-nav-link" title= 发布和订阅><span class="sidebar-link-text">发布和订阅</span></a></li><li class='sublist-item'><a href="/conference/Android/guide/5-recording.html" class="mobile-nav-link" title= 媒体流录制><span class="sidebar-link-text">媒体流录制</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-initializer.html" class="mobile-nav-link" title= WilddogVideoInitializer><span class="sidebar-link-text">WilddogVideoInitializer</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-room.html" class="mobile-nav-link" title= WilddogRoom><span class="sidebar-link-text">WilddogRoom</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-room-listener.html" class="mobile-nav-link" title= WilddogRoom.Listener><span class="sidebar-link-text">WilddogRoom.Listener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/local-stream.html" class="mobile-nav-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conference/Android/api/local-stream-options.html" class="mobile-nav-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conference/Android/api/camera-frame-listener.html" class="mobile-nav-link" title= LocalStream.CameraFrameListener><span class="sidebar-link-text">LocalStream.CameraFrameListener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/capture-listener.html" class="mobile-nav-link" title= LocalStream.CaptureListener><span class="sidebar-link-text">LocalStream.CaptureListener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/scaling-type.html" class="mobile-nav-link" title= ScalingType><span class="sidebar-link-text">ScalingType</span></a></li><li class='sublist-item'><a href="/conference/Android/api/room-stream.html" class="mobile-nav-link" title= RoomStream><span class="sidebar-link-text">RoomStream</span></a></li><li class='sublist-item'><a href="/conference/Android/api/room-stream-listener.html" class="mobile-nav-link" title= RoomStream.Listener><span class="sidebar-link-text">RoomStream.Listener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-view.html" class="mobile-nav-link" title= WilddogVideoView><span class="sidebar-link-text">WilddogVideoView</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-view-layout.html" class="mobile-nav-link" title= WilddogVideoViewLayout><span class="sidebar-link-text">WilddogVideoViewLayout</span></a></li><li class='sublist-item'><a href="/conference/Android/api/complete-listener.html" class="mobile-nav-link" title= CompleteListener><span class="sidebar-link-text">CompleteListener</span></a></li><li class='sublist-item'><a href="/conference/Android/api/wilddog-video-error.html" class="mobile-nav-link" title= WilddogVideoError><span class="sidebar-link-text">WilddogVideoError</span></a></li><li class='sublist-item'><a href="/conference/Android/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/Android/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">REST</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/REST/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conference/REST/api/snapshot.html" class="mobile-nav-link" title= 云端截图><span class="sidebar-link-text">云端截图</span></a></li><li class='sublist-item'><a href="/conference/REST/api/externalInput.html" class="mobile-nav-link" title= 媒体插播><span class="sidebar-link-text">媒体插播</span></a></li><li class='sublist-item'><a href="/conference/REST/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conference/REST/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li></ul>
+    
+  </div>
+
+</nav>
+</body>
+</html>

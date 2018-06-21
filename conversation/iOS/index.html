@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>一对一视频通话 | 开发文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="telephone=no,email=no" name="format-detection">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/conversation/iOS/index.html">
+  <!-- Alternative links -->
+  
+    
+  
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="/images/favicon.png" sizes="24x24">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="开发文档">
+  <!-- Open Graph -->
+  <meta name="description" content="简介野狗通信云一对一视频通话，基于 WebRTC ，采用 P2P + NAT穿透 的混合技术方案，可以使你的网站和APP快速获得一对一视频通话功能。值得注意的是，我们的一对一视频通话业务，P2P 类型的通话是不收取任何费用的，NAT穿透 则包含两项服务，分别是免费的STUN 和收费的 TURN 。从技术角度来讲，每一通一对一视频通话的建立，都会进行 P2P+STUN 的尝试，但这种尝试通常会由">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一对一视频通话">
+<meta property="og:url" content="http://yoursite.com/conversation/iOS/index.html">
+<meta property="og:site_name" content="开发文档">
+<meta property="og:description" content="简介野狗通信云一对一视频通话，基于 WebRTC ，采用 P2P + NAT穿透 的混合技术方案，可以使你的网站和APP快速获得一对一视频通话功能。值得注意的是，我们的一对一视频通话业务，P2P 类型的通话是不收取任何费用的，NAT穿透 则包含两项服务，分别是免费的STUN 和收费的 TURN 。从技术角度来讲，每一通一对一视频通话的建立，都会进行 P2P+STUN 的尝试，但这种尝试通常会由">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-06-21T12:46:00.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一对一视频通话">
+<meta name="twitter:description" content="简介野狗通信云一对一视频通话，基于 WebRTC ，采用 P2P + NAT穿透 的混合技术方案，可以使你的网站和APP快速获得一对一视频通话功能。值得注意的是，我们的一对一视频通话业务，P2P 类型的通话是不收取任何费用的，NAT穿透 则包含两项服务，分别是免费的STUN 和收费的 TURN 。从技术角度来讲，每一通一对一视频通话的建立，都会进行 P2P+STUN 的尝试，但这种尝试通常会由">
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="https://www.wilddog.com" id="logo"></a>
+    </h1>
+    <div class="menu-ctrl" style="display: none;">
+      <span class="menu-ctrl-line menu-ctrl-line-t"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-m"></span>
+      <span class="menu-ctrl-line menu-ctrl-line-b"></span>
+    </div>
+    <nav id="main-nav">
+      <a href="/overview/index.html" class="main-nav-link">概览</a>
+      <a href="/sync/Web/index.html" class="main-nav-link">实时通信引擎</a>
+      <a href="/sms/index.html" class="main-nav-link">智能短信</a>
+      <a href="/auth/Web/index.html" class="main-nav-link">身份认证</a>
+      
+      
+      
+      
+    </nav>
+    <div class="searchbar">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+        <span class="serach-placeholder">搜索</span>
+      </div>
+    </div>
+    <div class="searchbar-inputting">
+      <div class="search-tips">
+        <img src="/images/search-icon.svg" alt="" width="15" height="15" class="search-icon">
+      </div>
+      <form accept-charset="utf-8" action="/result/index.html">
+        <input type="search" class="search-input" placeholder="搜索" name="keyword">
+      </form>
+      <span class="close-search"><img src="/images/close.svg" alt=""></span>
+    </div>
+    <div class="header-info pull-right">
+        <span class="pull-left"><img src="" alt="" class="img-circle profile-avatar" width="24" height="24"></span>
+        <span class="user-email"></span>
+        <span class="arr-down icon-48"></span>
+        <ul class="drop-menu clearfix">
+            <li class="drop-menu-item header-item-profile col-sm-6 text-center">
+                <a href="https://www.wilddog.com/info/info" class="header-item-link">
+                    <span class="header-item-icon icon-profile">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m281 366c-2 0-4-1-6-2-2-2-2-5-2-7l15-75c0-2 1-3 2-4l129-129c19-19 52-19 71 0 10 9 15 22 15 36 0 13-5 26-15 35l-128 129c-2 1-3 2-4 2l-76 15c0 0-1 0-1 0z m22-79l-12 61 61-12 127-127c7-6 10-15 10-24 0-10-3-19-10-25-13-13-36-13-49 0z m7 73c-3 0-6-2-7-5-1-4-4-8-8-11-3-4-7-6-11-8-4-2-6-6-4-10 1-4 6-6 10-5 6 3 12 7 17 12 4 4 8 10 11 17 1 4-1 8-5 10-1 0-2 0-3 0z m47-9c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 10 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m126-126c-4 0-8-3-8-7-2-14-8-26-18-36-10-10-23-16-38-18-4 0-7-4-6-9 0-4 4-7 8-6 18 2 34 9 47 22 12 12 20 28 22 45 1 4-2 8-6 9-1 0-1 0-1 0z m-234-118l-109 0c-5 0-8-3-8-7 0-5 3-8 8-8l109 0c4 0 8 3 8 8 0 4-4 7-8 7z m-55 184c-58 0-106-46-106-103l0-85c0-57 48-103 106-103 59 0 107 46 107 103l0 85c0 57-48 103-107 103z m0-275c-50 0-91 39-91 87l0 85c0 48 41 88 91 88 50 0 91-40 91-88l0-85c0-48-41-87-91-87z m187 489l-373 0c-5 0-8-3-8-7l0-117c0-70 59-127 131-127 5 0 8 3 8 8 0 4-3 7-8 7-64 0-115 50-115 112l0 109 357 0 0-109c0-5 4-8 8-8 4 0 8 3 8 8l0 117c0 4-4 7-8 7z"></path></svg>
+                    </span>
+                    <span class="header-item-title">个人中心</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-confirm col-sm-6 text-center">
+                <a href="https://www.wilddog.com/pay/trade-entry" class="header-item-link">
+                    <span class="header-item-icon icon-confirm">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m15 188l-15 0 0-114c0-23 19-42 42-42l257 0c23 0 42 19 42 42l0 66-15 0 0-66c0-15-12-27-27-27l-257 0c-15 0-27 12-27 27z m455 286l-428 0c-23 0-42-19-42-43l0-257c0-23 19-42 42-42l428 0c23 0 42 19 42 42l0 257c0 24-19 43-42 43z m-428-327c-15 0-27 12-27 27l0 257c0 15 12 28 27 28l428 0c15 0 27-13 27-28l0-257c0-15-12-27-27-27l-428 0z m378 195c-22 0-39-18-39-39 0-22 17-39 39-39 21 0 39 17 39 39 0 21-18 39-39 39z m0-63c-14 0-24 11-24 24 0 13 10 24 24 24 13 0 24-11 24-24 0-13-11-24-24-24z"></path></svg>
+                    </span>
+                    <span class="header-item-title">财务</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-doc col-sm-6 text-center">
+                <a href="https://docs.wilddog.com/overview/index.html" class="header-item-link">
+                    <span class="header-item-icon icon-icon-v-05">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m100 232l305 0 0 17-305 0z m0 82l305 0 0 17-305 0z m0 83l305 0 0 17-305 0z m152-380c22 0 42 13 50 33 3 6 9 10 16 10l18 0 0 59-167 0 0-59 18 0c6 0 13-4 15-10 9-20 29-33 50-33m0-17c-29 0-54 18-65 43l-35 0 0 93 201 0 0-93-35 0c-11-25-36-43-66-43z m174 503l-348 0c-43 0-78-35-78-78l0-276c0-44 35-79 78-79l48 0 0 17-48 0c-34 0-61 28-61 62l0 276c0 34 27 61 61 61l348 0c34 0 62-27 62-61l0-276c0-34-28-62-62-62l-47 0 0-17 47 0c44 0 79 35 79 79l0 276c0 43-35 78-79 78z"></path></svg>
+                    </span>
+                    <span class="header-item-title">文档</span>
+                </a>
+            </li>
+            <li class="drop-menu-item header-item-service col-sm-6 text-center">
+                <a href="https://www.wilddog.com/wwwapi/account/kf5" class="header-item-link">
+                    <span class="header-item-icon icon-service">
+                      <svg width="24" height="25" viewBox="0 0 512 512"><path d="m256 16c132 0 240 108 240 240 0 132-108 240-240 240-132 0-240-108-240-240 0-132 108-240 240-240m0-16c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m0 355c-4 0-8-4-8-8l0-24c0-35 10-54 44-78 24-15 36-35 36-59 0-36-32-64-72-64-40 0-72 29-72 64 0 5-3 8-8 8-4 0-8-3-8-8 0-44 39-80 88-80 49 0 88 35 88 80 0 30-14 54-43 72-29 22-37 35-37 65l0 24c0 4-4 8-8 8z m0 79c-4 0-8-3-8-8l0-37c0-4 4-8 8-8 4 0 8 4 8 8l0 37c0 5-4 8-8 8z"></path></svg>
+                    </span>
+                    <span class="header-item-title">客服工单</span>
+                </a>
+            </li>
+            <li class="drop-menu-item logout col-sm-12 text-center">
+                <a href="" class="header-item-link logout-btn">退出登录</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="header-user pull-right">
+        <li class="pull-left login-tab"><a href="" class="login">登录</a></li>
+        <li class="pull-right register-tab"><a href="" class="btn btn-org-empty register">免费注册</a></li>
+    </ul>
+  </div>
+</header>
+<div class="mask fadeHide"></div>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">
+                  一对一视频通话
+                  <span class="edit-doc-source">
+                    <a href="https://github.com/WildDogTeam/wilddog-doc2/blob/master/source/conversation/iOS/index.md" class="edit-doc-link" title="改进本文">
+                    <svg version="1.1" width="16px" height="16px" viewBox="200.38 -94.272 16 16">
+                      <path fill="#999999" class="github" d="M208.38-94.272c-4.42,0-8,3.671-8,8.202c0,3.63,2.29,6.695,5.47,7.782c0.4,0.072,0.55-0.174,0.55-0.39
+                      c0-0.195-0.01-0.841-0.01-1.528c-2.01,0.379-2.53-0.502-2.69-0.964c-0.09-0.236-0.48-0.964-0.82-1.159
+                      c-0.28-0.154-0.68-0.533-0.01-0.543c0.63-0.01,1.08,0.595,1.23,0.841c0.72,1.241,1.87,0.892,2.33,0.677
+                      c0.07-0.533,0.28-0.892,0.51-1.097c-1.78-0.205-3.64-0.913-3.64-4.05c0-0.892,0.31-1.63,0.82-2.204
+                      c-0.08-0.205-0.36-1.046,0.08-2.174c0,0,0.67-0.215,2.2,0.841c0.64-0.185,1.32-0.277,2-0.277s1.36,0.092,2,0.277
+                      c1.53-1.066,2.2-0.841,2.2-0.841c0.44,1.128,0.16,1.969,0.08,2.174c0.51,0.574,0.82,1.302,0.82,2.204c0,3.148-1.87,3.845-3.65,4.05
+                      c0.29,0.256,0.54,0.748,0.54,1.517c0,1.097-0.01,1.979-0.01,2.256c0,0.215,0.15,0.472,0.55,0.39c3.256-1.127,5.449-4.258,5.45-7.782
+                      C216.38-90.601,212.8-94.272,208.38-94.272z"/>
+                    </svg><span class="article-edit-link">编辑文档</span></a>
+                  </span>
+                </h1>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="简介" class="top-heading article-heading"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>野狗通信云一对一视频通话，基于 <code>WebRTC</code> ，采用 <code>P2P + NAT穿透</code> 的混合技术方案，可以使你的网站和APP快速获得一对一视频通话功能。值得注意的是，我们的一对一视频通话业务，<code>P2P</code> 类型的通话是不收取任何费用的，<code>NAT穿透</code> 则包含两项服务，分别是免费的<code>STUN</code> 和收费的 <code>TURN</code> 。从技术角度来讲，每一通一对一视频通话的建立，都会进行 <code>P2P+STUN</code> 的尝试，但这种尝试通常会由于异构的网络或防火墙的阻止而失败，成功的概率一般在70%左右。当这种尝试失败时，就需要由 <code>TURN</code> 来保证通话建立。</p>
+<h2 id="应用场景" class="article-heading"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>社交娱乐：可以快速在你的社交娱乐、在线游戏等应用中增加视频聊天功能，让沟通更及时，信息传递更丰富。此外还可以结合第三方美颜滤镜、人脸识别方案，让社交更有趣。</p>
+<p>远程面试：可方便的集成到招聘网站或APP的即时通讯模块，方面招聘方和应聘者进行在线面试。</p>
+<p>远程医疗：远程咨询、在线问诊，足不出户轻松实现在线看病。</p>
+<p>视频客服：将一对一视频通话应用于在线客服领域，让沟通更直接、服务更高效。</p>
+<h2 id="优秀特性" class="article-heading"><a href="#优秀特性" class="headerlink" title="优秀特性"></a>优秀特性</h2><p>跨平台支持：VideoCall 提供了 Web、Android、iOS 三端的 SDK，不仅支持三端同时开发，还实现了移动 APP 和 Web 应用之间的无障碍通话。</p>
+<p>简单灵活：基于 WebRTC 技术，野狗 VideoCall SDK 使用开放标准，支持 Opus、 VP8 和 H.264 编解码，多清晰度可选。同时，Web 应用无需安装浏览器插件即可实现一对一视频通话，极大降低了终端用户的使用成本。</p>
+<p>自定义情景：丰富的使用场景，用户可以结合主要业务功能，实现情境通话。更可结合美颜滤镜、人脸识别、动态贴纸等方案，增强沟通趣味性。</p>
+<h2 id="兼容性支持" class="article-heading"><a href="#兼容性支持" class="headerlink" title="兼容性支持"></a>兼容性支持</h2><p>设备支持 <code>iPhone 5s</code> 以上、<code>iPad Air</code> 以上，系统支持 <code>iOS 8.0</code> 以上。</p>
+<h2 id="帮助与支持" class="article-heading"><a href="#帮助与支持" class="headerlink" title="帮助与支持"></a>帮助与支持</h2><p>你的任何反馈都可能帮助我们产品的改进。使用中遇到任何问题，都可以提交 <a href="https://wilddog.kf5.com/user/login/?_ga=1.87552923.207002905.1448960317" target="_blank" rel="noopener">客服工单</a>。</p>
+
+                <time class="article-footer-updated" datetime="2018-06-21T12:46:00.152Z" itemprop="dateModified">上次更新：2018-06-21</time>
+              </div>
+              <div class="toc-content">
+                <aside id="article-toc" role="navigation">
+                  <div class="toc-scroll-content">
+                    <div class="toc-inner">
+                      <span class="slide-dot"></span>
+                      <div id="article-toc-inner">
+                        <strong class="sidebar-title">目录</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优秀特性"><span class="toc-text">优秀特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性支持"><span class="toc-text">兼容性支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#帮助与支持"><span class="toc-text">帮助与支持</span></a></li></ol>
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+                <div class="toc-link-title"></div>
+              </div>
+              <footer class="article-footer">
+                <a href="/conversation/Web/changelog.html" class="article-footer-prev" title="更新日志"><img src='/images/arr-left.svg' class='arr-icon'><div class='page-title'><div>上一节：</div>更新日志 </div></a><a href="/conversation/iOS/quickstart.html" class="article-footer-next" title="快速入门"><div class='page-title'><div class='text-right'>下一节：</div>快速入门</div><img src='/images/arr-right.svg' class='arr-icon'></a>
+              </footer>
+              <div class="novice novice-register text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">野狗新手？</div>
+                <div class="register-text">立即注册，为你提供安全可靠的实时通信云服务。</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/my-account/signup?next=https://docs.wilddog.com" class="btn btn-org-full register-link">免费注册</a>
+                </div>
+              </div>
+              <div class="novice novice-help text-center">
+                <span class="close-novice"></span>
+                <img src="/images/light.svg" width="52" height="56" alt="" class="light">
+                <div class="novice-title">没找到需要的文档？</div>
+                <div class="register-text">你可以提交工单反馈 或 阅读常见问题</div>
+                <div class="btn-group">
+                  <a href="https://www.wilddog.com/wwwapi/account/kf5" target="_blank" class="btn btn-org-empty service-link">客服工单</a><a href="https://wilddog.kf5.com/hc" target="_blank" class="btn btn-gray question-link">常见问题</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+    <div class="outer">
+        <input type='hidden' value=Web,iOS,Android><div class='selected'>iOS</div><ul class='platforms'></ul>
+    </div>
+    <div class="inner">
+        <ul class='sidebar-nav'><li class='sidebar-nav-item'><strong class="sidebar-title">Web</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Web/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conversation/Web/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Web/guide/0-concepts.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/1-install.html" class="sidebar-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/2-mediaStream.html" class="sidebar-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/3-conversation.html" class="sidebar-link" title= 管理一对一视频通话><span class="sidebar-link-text">管理一对一视频通话</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/4-statistics.html" class="sidebar-link" title= 媒体流统计><span class="sidebar-link-text">媒体流统计</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Web/api/wilddogVideoInitializer.html" class="sidebar-link" title= WilddogVideoInitializer><span class="sidebar-link-text">WilddogVideoInitializer</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/wilddogVideoCall.html" class="sidebar-link" title= WilddogVideoCall><span class="sidebar-link-text">WilddogVideoCall</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/conversation.html" class="sidebar-link" title= Conversation><span class="sidebar-link-text">Conversation</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/localStream.html" class="sidebar-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/remoteStream.html" class="sidebar-link" title= RemoteStream><span class="sidebar-link-text">RemoteStream</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conversation/Web/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item sidebar-nav-item-show'><strong class="sidebar-title select current">iOS</strong><ul class='sublist current'><li class='sublist-item'><a href="/conversation/iOS/index.html" class="sidebar-link current" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conversation/iOS/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/iOS/guide/0-concepts.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/1-install.html" class="sidebar-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/2-mediaStream.html" class="sidebar-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/3-conversationManagement.html" class="sidebar-link" title= 管理一对一视频通话><span class="sidebar-link-text">管理一对一视频通话</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/4-videoFilter.html" class="sidebar-link" title= 美颜滤镜><span class="sidebar-link-text">美颜滤镜</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/5-recording.html" class="sidebar-link" title= 本地视频录制><span class="sidebar-link-text">本地视频录制</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/6-statistics.html" class="sidebar-link" title= 媒体流统计><span class="sidebar-link-text">媒体流统计</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoInitializer.html" class="sidebar-link" title= VideoInitializer><span class="sidebar-link-text">VideoInitializer</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoCall.html" class="sidebar-link" title= VideoCall><span class="sidebar-link-text">VideoCall</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoCallDelegate.html" class="sidebar-link" title= VideoCallDelegate><span class="sidebar-link-text">VideoCallDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoCallOptions.html" class="sidebar-link" title= VideoCallOptions><span class="sidebar-link-text">VideoCallOptions</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGConversation.html" class="sidebar-link" title= Conversation><span class="sidebar-link-text">Conversation</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGConversationDelegate.html" class="sidebar-link" title= ConversationDelegate><span class="sidebar-link-text">ConversationDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGConversationStatsDelegate.html" class="sidebar-link" title= ConversationStatsDelegate><span class="sidebar-link-text">ConversationStatsDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGStream.html" class="sidebar-link" title= Stream><span class="sidebar-link-text">Stream</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStream.html" class="sidebar-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStreamOptions.html" class="sidebar-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStreamDelegate.html" class="sidebar-link" title= LocalStreamDelegate><span class="sidebar-link-text">LocalStreamDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGRemoteStream.html" class="sidebar-link" title= RemoteStream><span class="sidebar-link-text">RemoteStream</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoView.html" class="sidebar-link" title= VideoView><span class="sidebar-link-text">VideoView</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStreamStatsReport.html" class="sidebar-link" title= LocalStreamStatsReport><span class="sidebar-link-text">LocalStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGRemoteStreamStatsReport.html" class="sidebar-link" title= RemoteStreamStatsReport><span class="sidebar-link-text">RemoteStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGIceTransportPolicy.html" class="sidebar-link" title= IceTransportPolicy><span class="sidebar-link-text">IceTransportPolicy</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGCallStatus.html" class="sidebar-link" title= CallStatus><span class="sidebar-link-text">CallStatus</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conversation/iOS/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="sidebar-title">Android</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Android/index.html" class="sidebar-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conversation/Android/quickstart.html" class="sidebar-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="sidebar-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Android/guide/0-concepts.html" class="sidebar-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/1-install-sdk.html" class="sidebar-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/2-mediaStream.html" class="sidebar-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/3-conversationManagement.html" class="sidebar-link" title= 管理一对一视频通话><span class="sidebar-link-text">管理一对一视频通话</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/4-beauty.html" class="sidebar-link" title= 美颜滤镜><span class="sidebar-link-text">美颜滤镜</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/5-recording.html" class="sidebar-link" title= 本地视频录制><span class="sidebar-link-text">本地视频录制</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/6-statistics.html" class="sidebar-link" title= 媒体流统计><span class="sidebar-link-text">媒体流统计</span></a></li></ul></li></li><li class='sublist-item'><strong class="sidebar-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-initializer.html" class="sidebar-link" title= WilddogVideoInitializer><span class="sidebar-link-text">WilddogVideoInitializer</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call.html" class="sidebar-link" title= WilddogVideoCall><span class="sidebar-link-text">WilddogVideoCall</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call-listener.html" class="sidebar-link" title= WilddogVideoCall.Listener><span class="sidebar-link-text">WilddogVideoCall.Listener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call-option.html" class="sidebar-link" title= WilddogVideoCallOption><span class="sidebar-link-text">WilddogVideoCallOption</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call-option-builder.html" class="sidebar-link" title= WilddogVideoCallOption.Builder><span class="sidebar-link-text">WilddogVideoCallOption.Builder</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-error.html" class="sidebar-link" title= WilddogVideoError><span class="sidebar-link-text">WilddogVideoError</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-view.html" class="sidebar-link" title= WilddogVideoView><span class="sidebar-link-text">WilddogVideoView</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-view-layout.html" class="sidebar-link" title= WilddogVideoViewLayout><span class="sidebar-link-text">WilddogVideoViewLayout</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/conversation.html" class="sidebar-link" title= Conversation><span class="sidebar-link-text">Conversation</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/conversation-listener.html" class="sidebar-link" title= Conversation.Listener><span class="sidebar-link-text">Conversation.Listener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/stream.html" class="sidebar-link" title= Stream><span class="sidebar-link-text">Stream</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream.html" class="sidebar-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/audio-buffer-listener.html" class="sidebar-link" title= LocalStream.AudioBufferListener><span class="sidebar-link-text">LocalStream.AudioBufferListener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/camera-frame-listener.html" class="sidebar-link" title= LocalStream.CameraFrameListener><span class="sidebar-link-text">LocalStream.CameraFrameListener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-stats-report.html" class="sidebar-link" title= LocalStreamStatsReport><span class="sidebar-link-text">LocalStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-options.html" class="sidebar-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-options-demension.html" class="sidebar-link" title= LocalStreamOptions.Dimension><span class="sidebar-link-text">LocalStreamOptions.Dimension</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-options-builder.html" class="sidebar-link" title= LocalStreamOptions.Builder><span class="sidebar-link-text">LocalStreamOptions.Builder</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/remote-stream.html" class="sidebar-link" title= RemoteStream><span class="sidebar-link-text">RemoteStream</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/remote-stream-stats-report.html" class="sidebar-link" title= RemoteStreamStatsReport><span class="sidebar-link-text">RemoteStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/stats-listener.html" class="sidebar-link" title= StatsListener><span class="sidebar-link-text">StatsListener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/scaling-type.html" class="sidebar-link" title= ScalingType><span class="sidebar-link-text">ScalingType</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/call-status.html" class="sidebar-link" title= CallStatus><span class="sidebar-link-text">CallStatus</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/error-code.html" class="sidebar-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conversation/Android/changelog.html" class="sidebar-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li></ul>
+    </div>
+</aside>
+
+    </div>
+    <div class="back-top-content">
+      <div class="back-top"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/public.js"></script>
+
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/search.js"></script>
+<!-- endbuild -->
+
+<!-- Google Tag Manager -->
+<script>
+window.addEventListener('load', function() {
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.wilddog.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-53PGC2');
+})
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Algolia -->
+<script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog-sync.js" ></script>
+
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+  <!--   <div id="footer-copyright">
+    &copy; 2018 <a href="https://www.wilddog.com/" target="_blank">野狗</a><br>
+  </div> -->
+    <div id="footer-links">
+		<a href="/overview/index.html" class="footer-link">文档</a>
+		<a href="https://www.wilddog.com/download" class="footer-link">SDK下载</a>
+		<a href="https://www.wilddog.com/product/pricing" class="footer-link">价格</a>
+		<a href="https://life.wilddog.com/wilddog-contact.html" class="footer-link">联系我们</a>
+		<a href="https://wilddog.kf5.com/user/login/?_ga=1.257821899.1360428381.1464868258" class="footer-link">客服工单</a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="mobile-nav-item">
+        <a href="https://github.com/" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <ul class='sidebar-nav'><li class='sidebar-nav-item'><strong class="mobile-nav-title">Web</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Web/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conversation/Web/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Web/guide/0-concepts.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/1-install.html" class="mobile-nav-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/2-mediaStream.html" class="mobile-nav-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/3-conversation.html" class="mobile-nav-link" title= 管理一对一视频通话><span class="sidebar-link-text">管理一对一视频通话</span></a></li><li class='sublist-item'><a href="/conversation/Web/guide/4-statistics.html" class="mobile-nav-link" title= 媒体流统计><span class="sidebar-link-text">媒体流统计</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Web/api/wilddogVideoInitializer.html" class="mobile-nav-link" title= WilddogVideoInitializer><span class="sidebar-link-text">WilddogVideoInitializer</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/wilddogVideoCall.html" class="mobile-nav-link" title= WilddogVideoCall><span class="sidebar-link-text">WilddogVideoCall</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/conversation.html" class="mobile-nav-link" title= Conversation><span class="sidebar-link-text">Conversation</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/localStream.html" class="mobile-nav-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/remoteStream.html" class="mobile-nav-link" title= RemoteStream><span class="sidebar-link-text">RemoteStream</span></a></li><li class='sublist-item'><a href="/conversation/Web/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conversation/Web/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item sidebar-nav-item-show'><strong class="mobile-nav-title select current">iOS</strong><ul class='sublist current'><li class='sublist-item'><a href="/conversation/iOS/index.html" class="mobile-nav-link current" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conversation/iOS/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/iOS/guide/0-concepts.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/1-install.html" class="mobile-nav-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/2-mediaStream.html" class="mobile-nav-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/3-conversationManagement.html" class="mobile-nav-link" title= 管理一对一视频通话><span class="sidebar-link-text">管理一对一视频通话</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/4-videoFilter.html" class="mobile-nav-link" title= 美颜滤镜><span class="sidebar-link-text">美颜滤镜</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/5-recording.html" class="mobile-nav-link" title= 本地视频录制><span class="sidebar-link-text">本地视频录制</span></a></li><li class='sublist-item'><a href="/conversation/iOS/guide/6-statistics.html" class="mobile-nav-link" title= 媒体流统计><span class="sidebar-link-text">媒体流统计</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoInitializer.html" class="mobile-nav-link" title= VideoInitializer><span class="sidebar-link-text">VideoInitializer</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoCall.html" class="mobile-nav-link" title= VideoCall><span class="sidebar-link-text">VideoCall</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoCallDelegate.html" class="mobile-nav-link" title= VideoCallDelegate><span class="sidebar-link-text">VideoCallDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoCallOptions.html" class="mobile-nav-link" title= VideoCallOptions><span class="sidebar-link-text">VideoCallOptions</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGConversation.html" class="mobile-nav-link" title= Conversation><span class="sidebar-link-text">Conversation</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGConversationDelegate.html" class="mobile-nav-link" title= ConversationDelegate><span class="sidebar-link-text">ConversationDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGConversationStatsDelegate.html" class="mobile-nav-link" title= ConversationStatsDelegate><span class="sidebar-link-text">ConversationStatsDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGStream.html" class="mobile-nav-link" title= Stream><span class="sidebar-link-text">Stream</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStream.html" class="mobile-nav-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStreamOptions.html" class="mobile-nav-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStreamDelegate.html" class="mobile-nav-link" title= LocalStreamDelegate><span class="sidebar-link-text">LocalStreamDelegate</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGRemoteStream.html" class="mobile-nav-link" title= RemoteStream><span class="sidebar-link-text">RemoteStream</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGVideoView.html" class="mobile-nav-link" title= VideoView><span class="sidebar-link-text">VideoView</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGLocalStreamStatsReport.html" class="mobile-nav-link" title= LocalStreamStatsReport><span class="sidebar-link-text">LocalStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGRemoteStreamStatsReport.html" class="mobile-nav-link" title= RemoteStreamStatsReport><span class="sidebar-link-text">RemoteStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGIceTransportPolicy.html" class="mobile-nav-link" title= IceTransportPolicy><span class="sidebar-link-text">IceTransportPolicy</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/WDGCallStatus.html" class="mobile-nav-link" title= CallStatus><span class="sidebar-link-text">CallStatus</span></a></li><li class='sublist-item'><a href="/conversation/iOS/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conversation/iOS/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li><li class='sidebar-nav-item'><strong class="mobile-nav-title">Android</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Android/index.html" class="mobile-nav-link" title= 概览><span class="sidebar-link-text">概览</span></a><li class='sublist-item'><a href="/conversation/Android/quickstart.html" class="mobile-nav-link" title= 快速入门><span class="sidebar-link-text">快速入门</span></a><li class='sublist-item'><strong class="mobile-nav-title">完整指南</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Android/guide/0-concepts.html" class="mobile-nav-link" title= 基础概念><span class="sidebar-link-text">基础概念</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/1-install-sdk.html" class="mobile-nav-link" title= 安装和初始化><span class="sidebar-link-text">安装和初始化</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/2-mediaStream.html" class="mobile-nav-link" title= 媒体流><span class="sidebar-link-text">媒体流</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/3-conversationManagement.html" class="mobile-nav-link" title= 管理一对一视频通话><span class="sidebar-link-text">管理一对一视频通话</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/4-beauty.html" class="mobile-nav-link" title= 美颜滤镜><span class="sidebar-link-text">美颜滤镜</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/5-recording.html" class="mobile-nav-link" title= 本地视频录制><span class="sidebar-link-text">本地视频录制</span></a></li><li class='sublist-item'><a href="/conversation/Android/guide/6-statistics.html" class="mobile-nav-link" title= 媒体流统计><span class="sidebar-link-text">媒体流统计</span></a></li></ul></li></li><li class='sublist-item'><strong class="mobile-nav-title">API 文档</strong><ul class='sublist'><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-initializer.html" class="mobile-nav-link" title= WilddogVideoInitializer><span class="sidebar-link-text">WilddogVideoInitializer</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call.html" class="mobile-nav-link" title= WilddogVideoCall><span class="sidebar-link-text">WilddogVideoCall</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call-listener.html" class="mobile-nav-link" title= WilddogVideoCall.Listener><span class="sidebar-link-text">WilddogVideoCall.Listener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call-option.html" class="mobile-nav-link" title= WilddogVideoCallOption><span class="sidebar-link-text">WilddogVideoCallOption</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-call-option-builder.html" class="mobile-nav-link" title= WilddogVideoCallOption.Builder><span class="sidebar-link-text">WilddogVideoCallOption.Builder</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-error.html" class="mobile-nav-link" title= WilddogVideoError><span class="sidebar-link-text">WilddogVideoError</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-view.html" class="mobile-nav-link" title= WilddogVideoView><span class="sidebar-link-text">WilddogVideoView</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/wilddog-video-view-layout.html" class="mobile-nav-link" title= WilddogVideoViewLayout><span class="sidebar-link-text">WilddogVideoViewLayout</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/conversation.html" class="mobile-nav-link" title= Conversation><span class="sidebar-link-text">Conversation</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/conversation-listener.html" class="mobile-nav-link" title= Conversation.Listener><span class="sidebar-link-text">Conversation.Listener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/stream.html" class="mobile-nav-link" title= Stream><span class="sidebar-link-text">Stream</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream.html" class="mobile-nav-link" title= LocalStream><span class="sidebar-link-text">LocalStream</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/audio-buffer-listener.html" class="mobile-nav-link" title= LocalStream.AudioBufferListener><span class="sidebar-link-text">LocalStream.AudioBufferListener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/camera-frame-listener.html" class="mobile-nav-link" title= LocalStream.CameraFrameListener><span class="sidebar-link-text">LocalStream.CameraFrameListener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-stats-report.html" class="mobile-nav-link" title= LocalStreamStatsReport><span class="sidebar-link-text">LocalStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-options.html" class="mobile-nav-link" title= LocalStreamOptions><span class="sidebar-link-text">LocalStreamOptions</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-options-demension.html" class="mobile-nav-link" title= LocalStreamOptions.Dimension><span class="sidebar-link-text">LocalStreamOptions.Dimension</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/local-stream-options-builder.html" class="mobile-nav-link" title= LocalStreamOptions.Builder><span class="sidebar-link-text">LocalStreamOptions.Builder</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/remote-stream.html" class="mobile-nav-link" title= RemoteStream><span class="sidebar-link-text">RemoteStream</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/remote-stream-stats-report.html" class="mobile-nav-link" title= RemoteStreamStatsReport><span class="sidebar-link-text">RemoteStreamStatsReport</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/stats-listener.html" class="mobile-nav-link" title= StatsListener><span class="sidebar-link-text">StatsListener</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/scaling-type.html" class="mobile-nav-link" title= ScalingType><span class="sidebar-link-text">ScalingType</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/call-status.html" class="mobile-nav-link" title= CallStatus><span class="sidebar-link-text">CallStatus</span></a></li><li class='sublist-item'><a href="/conversation/Android/api/error-code.html" class="mobile-nav-link" title= 错误码><span class="sidebar-link-text">错误码</span></a></li></ul></li></li><li class='sublist-item'><a href="/conversation/Android/changelog.html" class="mobile-nav-link" title= 更新日志><span class="sidebar-link-text">更新日志</span></a></ul></li></ul>
+    
+  </div>
+
+</nav>
+</body>
+</html>
